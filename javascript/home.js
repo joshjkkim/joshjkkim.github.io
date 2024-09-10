@@ -18,8 +18,8 @@ function createStar() {
     const star = document.createElement('img');
     star.src = '../photos/star.gif'; 
     star.style.position = 'absolute';
-    star.style.width = '30px'; 
-    star.style.height = '30px'; 
+    star.style.width = '15%'; 
+    star.style.height = '15%'; 
     star.style.opacity = Math.random(); 
     star.style.left = `${Math.random() * 100}vw`; 
     star.style.top = `${Math.random() * 100}vh`; 
@@ -76,13 +76,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const y = Math.random() * window.innerHeight;
 
-        const size = Math.random() * (200 ^ (Math.random() * 10)) + 150; 
-        seagull.style.width = `${size}px`;
-        seagull.style.height = `${size * 0.50}px`;
+        const size = Math.random() * 30 + 10; 
+        seagull.style.width = `${size}%`;
+        seagull.style.height = `${size * 0.50}%`;
 
         seagull.style.left = `0px`;
         seagull.style.top = `${y}px`;
-
+        const duration = Math.random() * 14 + 6; 
+        seagull.style.animationDuration = `${duration}s`;
         seagullContainer.appendChild(seagull);
 
         seagullsCreated++;
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             seagull.remove();
             seagullsCreated--;
-        }, 10000); 
+        }, duration * 1000); 
     }
 
     setInterval(() => {
@@ -164,12 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const cloud = document.createElement('div');
         cloud.className = 'cloud';
 
-        const size = Math.random() * (200 ^ (Math.random() * 10)) + 150; 
-        cloud.style.width = `${size}px`;
-        cloud.style.height = `${size * 0.50}px`; 
+        const size = Math.random() * (27 ^ (Math.random())) + 5; 
+        cloud.style.width = `${size}%`;
+        cloud.style.height = `${size * 0.80}%`; 
 
-        cloud.style.top = `${Math.random() * 150}px`; 
-        cloud.style.left = `${Math.random() * -300}px`; 
+        cloud.style.top = `${Math.random() * 15}%`; 
+        cloud.style.left = `${Math.random() - 10}%`; 
 
         const duration = Math.random() * 17 + 20; 
         cloud.style.animationDuration = `${duration}s`;
@@ -219,13 +220,13 @@ function createCoconut(palmtree) {
     const coconut = document.createElement('img');
     coconut.src = '../photos/coconut.png';
     coconut.style.position = 'absolute';
-    coconut.style.width = `${Math.random() * 100 + 30}px`;
+    coconut.style.width = `${Math.random() * 15}%`;
     coconut.style.height = coconut.style.height;
     coconut.style.display = 'block';
-    coconut.style.zIndex = '3';
+    coconut.style.zIndex = '4';
     const treeRect = palmtree.getBoundingClientRect();
     coconut.style.left = `${treeRect.left + treeRect.width / 2}px`;
-    coconut.style.top = `${treeRect.top + 100}px`;
+    coconut.style.top = `${treeRect.top + 50}px`;
     document.body.appendChild(coconut);
     coconut.style.transition = 'top 1.3s ease-in';
     setTimeout(() => {
@@ -264,17 +265,18 @@ function spawnCar() {
     const randomSpeed = getRandomInt(5, 10); 
     car.style.animationDuration = `${randomSpeed}s`;
 
-    const carYPosition = window.innerHeight - carSize - 50; 
+    const carYPosition = window.innerHeight - carSize
     car.style.left = `${window.innerWidth}px`;
-    car.style.top = `${carYPosition}px`;
+    car.style.top = `65%`;
 
     if(randomCarImage == '../photos/car3.gif') {
         car.style.animation = 'drive 10s reverse linear';
         const randomSpeed = getRandomInt(5, 10); // Between 5 and 10 seconds
         car.style.animationDuration = `${randomSpeed}s`;
-        car.style.right = `${window.innerWidth - 100}px`
-        car.style.top = `${carYPosition + 150}px`;
-        car.style.width = '170px'
+        car.style.right = `${window.innerWidth}px`
+        car.style.top = `85%`;
+        car.style.width = '13%'
+        car.style.height = '13%'
     }
 
     document.body.appendChild(car);
