@@ -1,4 +1,4 @@
-const fireImages = ['fire.gif']; 
+const fireImages = ['../photos/fire.gif']; 
 const blockSize = 100; 
 
 function spawnFireInGrid() {

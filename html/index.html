@@ -21,7 +21,7 @@
 
         .store {
             position: relative;
-            background: url('pixelartstorenight.png') no-repeat center center;
+            background: url('../photos/pixelartstorenight.png') no-repeat center center;
             background-size: contain;
             width: 600px;
             height: 400px;
@@ -80,7 +80,7 @@
 
         .cloud {
             position: absolute;
-            background: url('cloud3.png') no-repeat;
+            background: url('../photos/cloud3.png') no-repeat;
             background-size: cover;
             opacity: 0.45;
             animation: moveCloud 30s linear infinite;
@@ -147,7 +147,7 @@
 
         .star {
             position: absolute;
-            background: url('stargif1.gif') no-repeat;
+            background: url('../photos/stargif1.gif') no-repeat;
             background-size: contain;
             width: 15px; 
             height: 15px;
@@ -183,7 +183,7 @@
 
         .seagull {
             position: absolute;
-            background: url('seagull.gif') no-repeat;
+            background: url('../photos/seagull.gif') no-repeat;
             background-size: contain;
             width: 50px; 
             height: 50px;
@@ -258,7 +258,7 @@
         .road {
             width: 100%; 
             height: 200px;
-            background: url('pixelroad.jpg');
+            background: url('../photos/pixelroad.jpg');
             background-size: contain;
             position: fixed;
             bottom: 5px;
@@ -270,7 +270,7 @@
         .city {
             width: 100%; 
             height: 500px;
-            background: url('city.png');
+            background: url('../photos/city.png');
             background-size: contain;
             opacity: 0.5;
             position: fixed;
@@ -284,24 +284,24 @@
     </style>
 </head>
 <body>
-    <audio id="cloudsfx1" src="cloudsfx1.mp3"></audio>
-    <audio id="cloudsfx2" src="cloudsfx2.mp3"></audio>
-    <audio id="dolphinsfx1" src="dolphinsfx1.mp3"></audio>
-    <audio id="catsfx1" src="catsfx1.mp3"></audio>
-    <audio id="starHoverSound" src="starsfx.mp3"></audio>
-    <audio id="sunHoverSound" src="growingsfx.mp3"></audio>
+    <audio id="cloudsfx1" src="../audio/cloudsfx1.mp3"></audio>
+    <audio id="cloudsfx2" src="../audio/cloudsfx2.mp3"></audio>
+    <audio id="dolphinsfx1" src="../audio/dolphinsfx1.mp3"></audio>
+    <audio id="catsfx1" src="../audio/catsfx1.mp3"></audio>
+    <audio id="starHoverSound" src="../audio/starsfx.mp3"></audio>
+    <audio id="sunHoverSound" src="../audio/growingsfx.mp3"></audio>
     <div class="store">
-        <div class="hotspot door" onclick="window.location.href='/about.html';"></div>        
+        <div class="hotspot door" onclick="window.location.href='../html/about.html';"></div>        
     </div>
     <div class="road"></div> 
     <div class="city"></div> 
     <div class="clouds-container"></div> 
     <div class="stars-container"></div>
     <div class="seagulls-container"></div>
-    <img id="palmtree" src="palmtree.gif" style="display: none;" alt="Palm Tree">
-    <img id="palmtree2" src="palmtreeReversed.gif" style="display: none;" alt="Palm Tree 2">
-    <img id="waves" src="waves.gif" style="display: none;" alt="Waves">
-    <img id="sun" src="pixelartsun.gif" style="display: none;" alt="Shining Sun">    
-    <script src="home.js"></script>
+    <img id="palmtree" src="../photos/palmtree.gif" style="display: none;" alt="Palm Tree">
+    <img id="palmtree2" src="../photos/palmtreeReversed.gif" style="display: none;" alt="Palm Tree 2">
+    <img id="waves" src="../photos/waves.gif" style="display: none;" alt="Waves">
+    <img id="sun" src="../photos/pixelartsun.gif" style="display: none;" alt="Shining Sun">    
+    <script src="../javascript/home.js"></script>
 </body>
 </html>

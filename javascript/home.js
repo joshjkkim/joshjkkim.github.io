@@ -16,7 +16,7 @@ function playSound(effect) {
 
 function createStar() {
     const star = document.createElement('img');
-    star.src = 'star.gif'; 
+    star.src = '../photos/star.gif'; 
     star.style.position = 'absolute';
     star.style.width = '30px'; 
     star.style.height = '30px'; 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => star.remove(), 5000); 
         });
             const store = document.querySelector('.store');
-            store.style.backgroundImage = 'url("pixelartstore.png")';
+            store.style.backgroundImage = 'url("../photos/pixelartstore.png")';
             
             const sun = document.getElementById('sun');
             sun.style.display = 'block'; 
@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function createCoconut(palmtree) {
     const coconut = document.createElement('img');
-    coconut.src = 'coconut.png';
+    coconut.src = '../photos/coconut.png';
     coconut.style.position = 'absolute';
     coconut.style.width = `${Math.random() * 100 + 30}px`;
     coconut.style.height = coconut.style.height;
@@ -249,7 +249,7 @@ palmTrees.forEach(palmtree => {
 });
 
 
-const carImages = ['car1.gif', 'car3.gif']; 
+const carImages = ['../photos/car1.gif', '../photos/car3.gif']; 
 const carSize = 200; 
 let carsStopSpawning = false;
 function spawnCar() {
@@ -268,7 +268,7 @@ function spawnCar() {
     car.style.left = `${window.innerWidth}px`;
     car.style.top = `${carYPosition}px`;
 
-    if(randomCarImage == 'car3.gif') {
+    if(randomCarImage == '../photos/car3.gif') {
         car.style.animation = 'drive 10s reverse linear';
         const randomSpeed = getRandomInt(5, 10); // Between 5 and 10 seconds
         car.style.animationDuration = `${randomSpeed}s`;
