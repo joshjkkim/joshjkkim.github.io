@@ -22,21 +22,34 @@
         .background-grid {
             position: absolute;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('../photos/netherrack.png');
-            background-repeat: repeat; 
-            background-size: 100px 100px; 
-            z-index: 0; 
+            display: grid;
+            z-index: 0;
+        }
+
+        .block {
+            background-size: cover;
+            width: 60px;
+            height: 60px;
+            opacity: 0;
+            animation: placeBlock 0.4s forwards ease-in-out;
+        }
+
+        @keyframes placeBlock {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .netherportal {
             position: relative;
             background: url('../photos/netherportal.gif') no-repeat center center;
             background-size: contain;
-            width: 400px;
-            height: 500px;
+            width: 30vw;
+            height: 35vw;
             z-index: 3; 
+            animation: fadeOut 5s ease-out reverse;
         }
 
         .fire-block {
@@ -71,12 +84,166 @@
             100% { transform: translateX(-100vw) translateY(-400px); }
         }
 
+
+        .video {
+            position: fixed;
+            background: url('../photos/video.mp4') no-repeat center center;
+            background-size: cover;
+            width: 43vw;
+            height: 35vw;
+            z-index: 4; 
+            display: none;
+            animation: slideOutFromTop 5s ease-out forwards;
+        }
+        
+        .painting {
+            position: fixed;
+            background: url('../photos/painting2.webp') no-repeat center center;
+            background-size: contain;
+            width: 62vw;
+            height: 62vw;
+            left: 17vw;
+            bottom: 3vw;
+            z-index: 3; 
+            display: none;
+            animation: slideOutFromTop 5s ease-out forwards;
+        }
+
+
+        .lever-container {
+            position: fixed;
+            right: 4vw;
+        }
+
+        .lever {
+            position: relative;
+            background: url('../photos/leverOff.png') no-repeat;
+            background-size: contain;
+            right: 40%;
+            top: 40px;
+            width: 13vw;
+            height: 13vw;
+            z-index: 4; 
+            animation: fadeOut 2.5s ease-out reverse, bounce 0.5s ease-in-out infinite alternate;
+        }
+
+        .ironblock {
+            position: absolute;
+            background: url('../photos/ironblock2.webp') no-repeat;
+            background-size: contain;
+            width: 13vw;
+            height: 13vw;
+            z-index: 3; 
+            animation: fadeOut 2.5s ease-out reverse, bounce 0.5s ease-in-out infinite alternate;
+        }
+
+        .lever-container:hover .ironblock,
+        .lever-container:hover .lever {
+            animation-play-state: paused;
+        }
+
+        .signPortal {
+            position: fixed;
+            background: url('../photos/signPortal.png') no-repeat;
+            background-size: contain;
+            width: 10vw;
+            height: 10vw;
+            top: 5vw;
+            z-index: 2; 
+            animation: fadeOut 5s ease-out reverse;
+        }
+
+        .signBG {
+            position: fixed;
+            background: url('../photos/sign2.png') no-repeat;
+            background-size: contain;
+            width: 10vw;
+            height: 10vw;
+            right: 35vw;
+            top: 5vw;
+            z-index: 2; 
+            animation: fadeOut 5s ease-out reverse;
+        }
+
+        .signLever {
+            position: fixed;
+            background: url('../photos/sign3.png') no-repeat;
+            background-size: contain;
+            width: 10vw;
+            height: 10vw;
+            left: 35vw;
+            top: 5vw;
+            z-index: 2; 
+            animation: fadeOut 5s ease-out reverse;
+        }
+
+        .signHome {
+            position: fixed;
+            background: url('../photos/signhome.png') no-repeat;
+            background-size: contain;
+            width: 10vw;
+            height: 10vw;
+            bottom: -4vw;
+            left: 2vw;
+            z-index: 2; 
+            animation: scale 1s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(100vw);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOutFromTop {
+            from {
+                transform: translateY(-100vw);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(30px); }
+        }
+
+        @keyframes breakBlock {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes scale {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
     </style>
 </head>
 <body>
     <div class="background-grid"></div>    
     <div class="bees-container"></div>  
-    <div class="netherportal" onclick="window.location.href='index.html';"></div>        
+    <div class="lever-container">
+        <div class="ironblock"></div>
+        <div class="lever"></div>
+    </div>
+        <div class="painting"></div>
+        <div class="video"></div>
+        <div class="signBG"></div>
+        <div class="signLever"></div>
+        <div class="signPortal"></div>
+        <div class="signHome" onclick="window.location.href='../index.html';"></div>
+    <div class="netherportal" onclick="window.location.href='https://github.com/dumdum9000';"></div>        
     <script src="../javascript/about.js"></script>
 </body>
 </html>

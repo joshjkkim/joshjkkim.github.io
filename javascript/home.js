@@ -154,9 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 car.remove()
             });
 
-            
-            
-
             document.body.style.transition = 'background-color 2s ease'; 
             document.body.style.backgroundColor = '#b3e0ff'; 
     }
@@ -290,7 +287,7 @@ function spawnCar() {
 function startCarSpawning() {
     setInterval(() => {
         spawnCar();
-    }, getRandomInt(1000, 2500)); 
+    }, getRandomInt(2000, 4000)); 
 }
 
 function getRandomInt(min, max) {
