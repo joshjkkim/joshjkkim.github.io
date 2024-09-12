@@ -95,7 +95,6 @@ const blockImages = [
     '../photos/emeraldore.webp',
     '../photos/enderchest.webp',
     '../photos/furnace.webp',
-    '../photos/glass.webp',
     '../photos/goldblock.webp',
     '../photos/haybale.webp',
     '../photos/ironblock.webp',
@@ -142,7 +141,7 @@ function fillBackgroundGrid() {
             block.style.animation = 'breakBlock 1s ease forwards';  
             setTimeout(() => {
                 block.style.animation = '';  
-                block.style.backgroundImage = `url('${blockImages[getRandomInt(0, blockImages.length - 1)]}')`;  
+                block.style.backgroundImage = `url('../photos/glass.webp')`;  
             }, 1000);  
         });
 
@@ -159,6 +158,8 @@ const painting = document.querySelector('.painting');
 const signPortal = document.querySelector('.signPortal');
 const signLever = document.querySelector('.signLever');
 const signBG = document.querySelector('.signBG');
+const compass = document.querySelector('.compass');
+const signDemo = document.querySelector('.signDemo');
 
 let leverOn = false;  
 
@@ -186,22 +187,30 @@ lever.addEventListener('click', () => {
             signLever.style.display = 'none';
             video.style.animation = 'slideOutFromTop 5s ease-out forwards';
             painting.style.animation = 'slideOutFromTop 5s ease-out forwards';
+            compass.style.animation = 'slideOutFromTop 5s ease-out forwards';
+            signDemo.style.animation = 'slideOutFromTop 5s ease-out forwards';
             painting.style.display = 'block'
             video.style.display = 'block';
+            compass.style.display = 'block';
+            signDemo.style.display = 'block';
         }, 2100); 
         video.style.pointerEvents = "auto";  
     } else {
         lever.style.backgroundImage = "url('../photos/leverOff.png')";
 
     painting.style.animation = "slideInFromTop 3s ease-in reverse";
+    compass.style.animation = "slideInFromTop 3s ease-in reverse";
     video.style.animation = "slideInFromTop 3s ease-in reverse";
+    signDemo.style.animation = "slideInFromTop 3s ease-in reverse";
     netherportal.style.animation = "slideInFromTop 2s ease-out forwards";
     signPortal.style.animation = "slideInFromTop 2s ease-out forwards";
     signBG.style.animation = "slideInFromTop 2s ease-out forwards";
     signLever.style.animation = "slideInFromTop 2s ease-out forwards";
     setTimeout(() => {
         video.style.display = 'none';
+        compass.style.display = 'none';
         painting.style.display = 'none'
+        signDemo.style.display = 'none'
         netherportal.style.display = 'block';
         signPortal.style.display = 'block';
         signBG.style.display = 'block';
@@ -211,3 +220,46 @@ lever.addEventListener('click', () => {
     }
 });
 
+const BGGifs = [
+    '../photos/mcbg1.gif',
+    '../photos/mcbg3.gif',
+    '../photos/mcbg2.gif',
+    '../photos/mcbg4.gif',
+    '../photos/mcbg5.gif',
+    '../photos/mcbg6.gif',
+];
+
+const randomBG = BGGifs[Math.floor(Math.random() * BGGifs.length)];
+
+const body = document.querySelector('body');
+
+body.style.backgroundImage = `url(${randomBG})`;
+body.style.backgroundSize = 'cover'
+
+let videoChoice = 0
+const videoList = [
+    '../photos/video.mp4',
+    '../photos/mcvid2.mov',
+    '../photos/mcbotvid3.mp4',
+    '../photos/pitvid1.mov',
+]
+
+const signList = [
+    '../photos/signdemo1.png',
+    '../photos/signdemo2.png',
+    '../photos/signdemo4.png',
+    '../photos/signdemo3.png',
+]
+
+compass.addEventListener('click', () => {
+    videoChoice++
+    compass.style.animation = "scale 0.15s ease-in-out alternate"
+    if(videoChoice > videoList.length - 1) {
+        videoChoice = 0
+    }
+        video.style.backgroundImage = `url(${videoList[videoChoice]})`;
+        signDemo.style.backgroundImage = `url(${signList[videoChoice]})`;
+        setTimeout(() => {
+            compass.style.animation = "none"
+        }, 50)
+})
