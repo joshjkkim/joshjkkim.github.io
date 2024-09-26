@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining Hall Menu</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <div id="menu-header">
+        <h1>Today's Menu</h1>
+        <div>
+            <label for="dining-hall-select">Select Dining Hall:</label>
+            <select id="dining-hall-select" class="dining-hall-select">
+                <option value="south-quad">South Quad</option>
+                <option value="east-quad">East Quad</option>
+                <option value="bursley">Bursley</option>
+                <option value="markley">Markley</option>
+                <option value="north-quad">North Quad</option>
+                <option value="mosher-jordan">MOJO</option>
+            </select>
+        </div>
+        
+    
+        <div>
+            <label for="max-sodium">Max Sodium (mg):</label>
+            <input type="number" id="max-sodium" placeholder="e.g., 2000" />
+        </div>
+        <div>
+            <label for="max-cholesterol">Max Cholesterol (mg):</label>
+            <input type="number" id="max-cholesterol" placeholder="e.g., 300" />
+        </div>
+        <div>
+            <label for="max-sugars">Max Sugars (g):</label>
+            <input type="number" id="max-sugars" placeholder="e.g., 50" />
+        </div>
+        <div>
+            <label for="min-protein">Min Protein (g):</label>
+            <input type="number" id="min-protein" placeholder="e.g., 10" />
+        </div>
+        <div>
+            <label for="max-total-fat">Max Total Fat (g):</label>
+            <input type="number" id="max-total-fat" placeholder="e.g., 70" />
+        </div>
+        <div>
+            <input type="number" id="calorie-input" placeholder="Enter calorie target">
+            <button id="generate-button">Generate Menu</button>
+        </div>
+    </div>
+    
+    <div id="nutrition-facts">
+        <h2>Total Nutrition Facts:</h2>
+        <p>Sodium: <span id="total-sodium">0</span> mg</p>
+        <p>Cholesterol: <span id="total-cholesterol">0</span> mg</p>
+        <p>Sugars: <span id="total-sugars">0</span> g</p>
+        <p>Protein: <span id="total-protein">0</span> g</p>
+        <p>Total Fat: <span id="total-fat">0</span> g</p>
+        <h2>Total Calories: <span id="total-calories">0</span></h2>
+    </div>
+    
+    <div id="menu-container">
+    </div>
+    
+    <script src="frontend.js"></script>
+</body>
+</html>

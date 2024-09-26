@@ -233,6 +233,7 @@ const spriteList = [
       createRandomSprite();
     }
 
+    
 // Game loop
 function animate() {
   requestAnimationFrame(animate);
