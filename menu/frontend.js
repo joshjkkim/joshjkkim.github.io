@@ -44,7 +44,6 @@ function displayMenu(items) {
     const container = document.getElementById('menu-container');
 
     container.classList.add('fade');
-
     setTimeout(() => {
         container.innerHTML = '';
 
@@ -67,9 +66,7 @@ function displayMenu(items) {
             });
 
             caloriesInfo.innerHTML = `<strong>Calories:</strong> ${item.calories}`;
-
             containsInfo.innerHTML = `<strong>Contains:</strong> ${item.contains.join(', ')}`;
-
             nutritionInfo.innerHTML = `
                 <strong>Nutrition Facts:</strong> Sodium: ${item.sodium}mg, Cholesterol: ${item.cholesterol}mg, 
                 Sugars: ${item.sugars}g, Protein: ${item.protein}g, Total Fat: ${item.totalFat}g
@@ -82,18 +79,19 @@ function displayMenu(items) {
             foodItemDiv.appendChild(traitsList);
             foodItemDiv.appendChild(caloriesInfo);
             foodItemDiv.appendChild(containsInfo);
-            foodItemDiv.appendChild(nutritionInfo); 
+            foodItemDiv.appendChild(nutritionInfo);
+
+            foodItemDiv.addEventListener('click', () => addToCurrentlyAte(item));
 
             container.appendChild(foodItemDiv);
         });
 
         container.classList.remove('fade');
         container.classList.add('fade-in');
-
         setTimeout(() => {
             container.classList.remove('fade-in');
-        }, 500); 
-    }, 500); 
+        }, 500);
+    }, 500);
 }
 
 
@@ -223,3 +221,112 @@ function getRandomColor() {
     }
     return color;
 }
+
+
+document.getElementById('food-button').addEventListener('click', () => {
+    const searchTerm = document.getElementById('food-searcher').value.toLowerCase();
+
+    if (searchTerm) {
+        const filteredItems = menuItems.filter(item => item.food.toLowerCase().includes(searchTerm));
+
+        if (filteredItems.length > 0) {
+            displayMenu(filteredItems);
+        } else {
+            document.getElementById('menu-container').innerHTML = '<p>No items found matching the search term.</p>';
+        }
+    } else {
+        document.getElementById('menu-container').innerHTML = '<p>Please enter a food name to search.</p>';
+    }
+});
+
+
+let currentlyAteItems = [];
+let totalAteNutrition = {
+    calories: 0,
+    sodium: 0,
+    cholesterol: 0,
+    sugars: 0,
+    protein: 0,
+    fat: 0
+};
+
+function updateTotalAteNutrition() {
+    document.getElementById('total-ate-calories').textContent = `Calories: ${totalAteNutrition.calories}`;
+    document.getElementById('total-ate-sodium').textContent = `Sodium: ${totalAteNutrition.sodium}mg`;
+    document.getElementById('total-ate-cholesterol').textContent = `Cholesterol: ${totalAteNutrition.cholesterol}mg`;
+    document.getElementById('total-ate-sugars').textContent = `Sugars: ${totalAteNutrition.sugars}g`;
+    document.getElementById('total-ate-protein').textContent = `Protein: ${totalAteNutrition.protein}g`;
+    document.getElementById('total-ate-fat').textContent = `Total Fat: ${totalAteNutrition.fat}g`;
+}
+
+function addToCurrentlyAte(item) {
+
+    currentlyAteItems.push(item);
+
+    totalAteNutrition.calories += parseInt(item.calories);
+    totalAteNutrition.sodium += parseInt(item.sodium);
+    totalAteNutrition.cholesterol += parseInt(item.cholesterol);
+    totalAteNutrition.sugars += parseInt(item.sugars);
+    totalAteNutrition.protein += parseInt(item.protein);
+    totalAteNutrition.fat += parseInt(item.totalFat);
+
+    const currentlyAteContainer = document.getElementById('currently-ate-items');
+    const ateItemDiv = document.createElement('label');
+    ateItemDiv.classList.add('ate-item');
+    ateItemDiv.textContent = item.food;
+
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('remove-button')
+    removeButton.addEventListener('click', () => removeFromCurrentlyAte(item, removeButton));
+
+    currentlyAteContainer.append(removeButton);
+    removeButton.appendChild(ateItemDiv);
+    
+
+    updateTotalAteNutrition();
+}
+
+function removeFromCurrentlyAte(item, element) {
+    const itemIndex = currentlyAteItems.indexOf(item);
+    if (itemIndex > -1) {
+        currentlyAteItems.splice(itemIndex, 1);
+
+        totalAteNutrition.calories -= parseInt(item.calories);
+        totalAteNutrition.sodium -= parseInt(item.sodium);
+        totalAteNutrition.cholesterol -= parseInt(item.cholesterol);
+        totalAteNutrition.sugars -= parseInt(item.sugars);
+        totalAteNutrition.protein -= parseInt(item.protein);
+        totalAteNutrition.fat -= parseInt(item.totalFat);
+
+        element.remove();
+
+        updateTotalAteNutrition();
+    }
+}
+
+document.querySelectorAll('.hide-button').forEach(hideButton => {
+    hideButton.addEventListener('click', () => {
+        const parent = hideButton.parentNode;
+
+        
+
+        parent.classList.add('fade');
+        setTimeout(() => {
+            parent.classList.remove('fade');
+            parent.style.display = 'none';
+            parent.parentNode.insertBefore(showButton, parent.nextSibling);
+        }, 500);
+
+        const showButton = document.createElement('button');
+        showButton.textContent = 'Show Category';
+        showButton.classList.add('show-button');
+
+        
+
+        showButton.addEventListener('click', () => {
+    
+            parent.style.display = 'block';  
+            showButton.remove(); 
+        });
+    });
+});

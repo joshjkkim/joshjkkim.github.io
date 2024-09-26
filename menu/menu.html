@@ -21,7 +21,7 @@
             </select>
         </div>
         
-    
+        <div id="nutrition-input">
         <div>
             <label for="max-sodium">Max Sodium (mg):</label>
             <input type="number" id="max-sodium" placeholder="e.g., 2000" />
@@ -46,6 +46,13 @@
             <input type="number" id="calorie-input" placeholder="Enter calorie target">
             <button id="generate-button">Generate Menu</button>
         </div>
+        <div>
+            <label for="max-total-fat">Food Searcher:</label>
+            <input type="text" id="food-searcher" placeholder="Enter Food You Wish to Search For">
+            <button id="food-button">Search for Food</button>
+        </div>
+        <button class="hide-button">Hide Category</button>
+    </div>
     </div>
     
     <div id="nutrition-facts">
@@ -56,10 +63,26 @@
         <p>Protein: <span id="total-protein">0</span> g</p>
         <p>Total Fat: <span id="total-fat">0</span> g</p>
         <h2>Total Calories: <span id="total-calories">0</span></h2>
+        <button class="hide-button">Hide Category</button>
+    </div>
+
+    <div id="currently-ate">
+        <h2>Currently Ate:</h2>
+        <div id="currently-ate-items"></div>
+        <h3>Total Nutrition Facts:</h3>
+        <p id="total-ate-calories">Calories: 0</p>
+        <p id="total-ate-sodium">Sodium: 0mg</p>
+        <p id="total-ate-cholesterol">Cholesterol: 0mg</p>
+        <p id="total-ate-sugars">Sugars: 0g</p>
+        <p id="total-ate-protein">Protein: 0g</p>
+        <p id="total-ate-fat">Total Fat: 0g</p>
+        <button class="hide-button">Hide Category</button>
     </div>
     
     <div id="menu-container">
     </div>
+    
+
     
     <script src="frontend.js"></script>
 </body>
