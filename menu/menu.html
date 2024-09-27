@@ -10,18 +10,69 @@
     <div id="menu-header">
         <h1>Today's Menu</h1>
         <div>
-            <label for="dining-hall-select">Select Dining Hall:</label>
-            <select id="dining-hall-select" class="dining-hall-select">
-                <option value="south-quad">South Quad</option>
-                <option value="east-quad">East Quad</option>
-                <option value="bursley">Bursley</option>
-                <option value="markley">Markley</option>
-                <option value="north-quad">North Quad</option>
-                <option value="mosher-jordan">MOJO</option>
-            </select>
+            <div class="dining-hall-container">
+                <select id="dining-hall-select" onchange="showDiningHallOptions()">
+                    <option value="">Select Dining Hall</option>
+                    <option value="south-quad">South Quad</option>
+                    <option value="east-quad">East Quad</option>
+                    <option value="north-quad">North Quad</option>
+                    <option value="bursley">Bursley</option>
+                    <option value="mosher-jordan">MoJo</option>
+                    <option value="markley">Markley</option>
+                </select>
+
+                <div id="dining-hall-options" class="centered-options hide">
+                    <div class="dining-hall-option" id="south-quad">
+                        <img src="southquad.jpg" alt="South Quad Img">
+                        <p>South Quad</p>
+                    </div>
+                    <div class="dining-hall-option" id="east-quad">
+                        <img src="eastquad.jpg" alt="East Quad Img">
+                        <p>East Quad</p>
+                    </div>
+                    <div class="dining-hall-option" id="north-quad">
+                        <img src="northquad.jpg" alt="North Quad Img">
+                        <p>North Quad</p>
+                    </div>
+                    <div class="dining-hall-option" id="bursley">
+                        <img src="bursley.jpg" alt="Bursley Img">
+                        <p>Bursley</p>
+                    </div>
+                    <div class="dining-hall-option" id="mosher-jordan">
+                        <img src="mosherjordan.jpg" alt="MoJo Img">
+                        <p>MoJo</p>
+                    </div>
+                    <div class="dining-hall-option" id="markley">
+                        <img src="markley.jpg" alt="Markley Img">
+                        <p>Markley</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div id="nutrition-input">
+    </div>
+    
+    <div id="filter-list">
+    <div id="dietary-traits">
+        <h2>Dietary Restrictions</h2>
+        <label>
+            <input type="checkbox" id="halal" /> Halal
+        </label>
+        <label>
+            <input type="checkbox" id="vegan" /> Vegan
+        </label>
+        <label>
+            <input type="checkbox" id="vegetarian" /> Vegetarian
+        </label>
+        <label>
+            <input type="checkbox" id="kosher" /> Kosher
+        </label>
+        <label>
+            <input type="checkbox" id="gluten-free" /> Gluten Free
+        </label>
+    </div>
+    </div>
+
+    <div id="nutrition-input">
         <div>
             <label for="max-sodium">Max Sodium (mg):</label>
             <input type="number" id="max-sodium" placeholder="e.g., 2000" />
@@ -35,7 +86,7 @@
             <input type="number" id="max-sugars" placeholder="e.g., 50" />
         </div>
         <div>
-            <label for="min-protein">Min Protein (g):</label>
+            <label for="min-protein">Max Protein (g):</label>
             <input type="number" id="min-protein" placeholder="e.g., 10" />
         </div>
         <div>
@@ -47,16 +98,15 @@
             <button id="generate-button">Generate Menu</button>
         </div>
         <div>
-            <label for="max-total-fat">Food Searcher:</label>
+            <label for="food-searcher">Food Searcher:</label>
             <input type="text" id="food-searcher" placeholder="Enter Food You Wish to Search For">
             <button id="food-button">Search for Food</button>
         </div>
         <button class="hide-button">Hide Category</button>
     </div>
-    </div>
     
     <div id="nutrition-facts">
-        <h2>Total Nutrition Facts:</h2>
+        <h2>Random Menu Nutrition Facts:</h2>
         <p>Sodium: <span id="total-sodium">0</span> mg</p>
         <p>Cholesterol: <span id="total-cholesterol">0</span> mg</p>
         <p>Sugars: <span id="total-sugars">0</span> g</p>
@@ -81,9 +131,7 @@
     
     <div id="menu-container">
     </div>
-    
 
-    
     <script src="frontend.js"></script>
 </body>
 </html>

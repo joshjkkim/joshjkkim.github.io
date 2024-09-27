@@ -69,14 +69,6 @@ label {
     transform: scale(1.05);
 }
 
-#nutrition-facts {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-}
-
 #menu-container {
     display: flex;
     overflow-x: auto;
@@ -97,6 +89,7 @@ label {
 
 .food-item:hover {
     transform: scale(1.05);
+    background-color: #0056b3;
 }
 
 .traits-list {
@@ -139,16 +132,59 @@ label {
     }
 }
 
-.dining-hall-select {
+.dining-hall-container {
+    position: relative;
+    display: inline-block;
+}
+
+#dining-hall-select {
     font-size: 16px;
     padding: 10px;
     border: 2px solid #007BFF;
     border-radius: 5px;
     background-color: #f8f9fa;
     color: #343a40;
-    transition: all 0.3s ease;
+    cursor: pointer;
     width: 200px;
+    transition: all 0.3s ease;
 }
+
+.centered-options {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 80px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 100;
+}
+
+.dining-hall-option {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.dining-hall-option img {
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+#dining-hall-options p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
 
 .dining-hall-select:hover {
     border-color: #0056b3;
@@ -188,14 +224,6 @@ input[type="text"]:focus {
     outline: none;
 }
 
-#currently-ate {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-}
-
 .remove-button {
     background-color: #ff1313;
     color: rgb(255, 255, 255);
@@ -207,12 +235,16 @@ input[type="text"]:focus {
     font-size: 14px;
 }
 
+#filter-list,
+#nutrition-facts,
+#currently-ate,
 #nutrition-input {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
+    animation: fade-in 4s ease-in;
 }
 
 .hide-button {
@@ -262,4 +294,19 @@ input[type="text"]:focus {
 #food-button:hover {
     background-color: #3d0059;
     transform: scale(1.2);
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.fade-out {
+    animation: fade-out 5s forwards ease-in;
+    pointer-events: none; /* Prevent interaction during fading */
 }

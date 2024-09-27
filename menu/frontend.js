@@ -42,12 +42,15 @@ document.getElementById('generate-button').addEventListener('click', () => {
 
 function displayMenu(items) {
     const container = document.getElementById('menu-container');
-
     container.classList.add('fade');
     setTimeout(() => {
         container.innerHTML = '';
 
-        const filteredItems = items.filter(item => item.food !== 'Unknown' && item.traits.length > 0);
+        const filteredItems = items.filter(item => 
+            item.food !== 'Unknown' && 
+            item.traits.length > 0 &&
+            isItemSelected(item)
+        );
 
         filteredItems.forEach(item => {
             const foodItemDiv = document.createElement('div');
@@ -55,7 +58,7 @@ function displayMenu(items) {
             const traitsList = document.createElement('ul');
             const caloriesInfo = document.createElement('p');
             const containsInfo = document.createElement('p');
-            const nutritionInfo = document.createElement('p'); 
+            const nutritionInfo = document.createElement('p');
 
             foodName.textContent = item.food;
 
@@ -94,9 +97,39 @@ function displayMenu(items) {
     }, 500);
 }
 
+function isItemSelected(item) {
+    const halalChecked = document.getElementById('halal').checked;
+    const veganChecked = document.getElementById('vegan').checked;
+    const vegetarianChecked = document.getElementById('vegetarian').checked;
+    const kosherChecked = document.getElementById('kosher').checked;
+    const glutenFreeChecked = document.getElementById('gluten-free').checked;
+
+    if (halalChecked && !item.traits.includes('Halal')) {
+        return false; 
+    }
+
+    if (veganChecked && !item.traits.includes('Vegan')) {
+        return false; 
+    }
+
+    if (vegetarianChecked && !item.traits.includes('Vegetarian')) {
+        return false; 
+    }
+
+    if (kosherChecked && !item.traits.includes('Kosher')) {
+        return false; 
+    }
+
+    if (glutenFreeChecked && !item.traits.includes('Gluten Free')) {
+        return false; 
+    }
+
+    return true; 
+}
+
 
 function generateRandomMenu(calorieTarget) {
-    const targetRange = [calorieTarget - 100, calorieTarget + 100];
+    const targetRange = [calorieTarget - 20, calorieTarget];
     const selectedItems = [];
     let totalCalories = 0;
     let totalSodium = 0;
@@ -111,11 +144,18 @@ function generateRandomMenu(calorieTarget) {
     const minProtein = parseInt(document.getElementById('min-protein').value) || 0;
     const maxTotalFat = parseInt(document.getElementById('max-total-fat').value) || Infinity;
 
+    // Get selected dietary traits
+    const selectedTraits = [];
+    if (document.getElementById('halal').checked) selectedTraits.push('Halal');
+    if (document.getElementById('vegan').checked) selectedTraits.push('Vegan');
+    if (document.getElementById('vegetarian').checked) selectedTraits.push('Vegetarian');
+    if (document.getElementById('kosher').checked) selectedTraits.push('Kosher');
+    if (document.getElementById('gluten-free').checked) selectedTraits.push('Gluten Free');
+
     const usedIndices = new Set();
     let attempts = 0;
 
     while (totalCalories < targetRange[1] && attempts < 100) {
-
         const randomIndex = Math.floor(Math.random() * menuItems.length);
 
         if (usedIndices.has(randomIndex)) {
@@ -137,13 +177,18 @@ function generateRandomMenu(calorieTarget) {
 
         const newCalories = totalCalories + itemCalories;
 
+        // Check if the item matches the selected traits
+        const itemTraits = randomItem.traits || []; // Assuming traits are stored in `randomItem.traits`
+        const matchesTraits = selectedTraits.length === 0 || selectedTraits.every(trait => itemTraits.includes(trait));
+
         if (
             newCalories <= targetRange[1] &&
             (totalSodium + itemSodium) <= maxSodium &&
             (totalCholesterol + itemCholesterol) <= maxCholesterol &&
             (totalSugars + itemSugars) <= maxSugars &&
             (totalProtein + itemProtein) >= minProtein &&
-            (totalFat + itemTotalFat) <= maxTotalFat
+            (totalFat + itemTotalFat) <= maxTotalFat &&
+            matchesTraits // Ensure the item matches the selected traits
         ) {
             selectedItems.push(randomItem);
             totalCalories = newCalories;
@@ -168,6 +213,7 @@ function generateRandomMenu(calorieTarget) {
         document.getElementById('menu-container').innerHTML = '<p>No items meet the criteria.</p>';
     }
 }
+
 
 
 function displayGeneratedMenu(selectedItems) {
@@ -214,12 +260,10 @@ function displayGeneratedMenu(selectedItems) {
 fetchMenuData();
 
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    const r = Math.floor(Math.random() * 56) + 200; // Red between 200-255
+    const g = Math.floor(Math.random() * 56) + 200; // Green between 200-255
+    const b = Math.floor(Math.random() * 56) + 200; // Blue between 200-255
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 
@@ -328,5 +372,41 @@ document.querySelectorAll('.hide-button').forEach(hideButton => {
             parent.style.display = 'block';  
             showButton.remove(); 
         });
+    });
+});
+
+document.querySelectorAll('#nutrition-input, #nutrition-facts, #currently-ate, #filter-list').forEach(div => {
+    div.style.backgroundColor = getRandomColor();
+ })
+
+ function showDiningHallOptions() {
+    const diningHallSelect = document.getElementById('dining-hall-select');
+    const selectedValue = diningHallSelect.value;
+    const diningHallOptions = document.getElementById('dining-hall-options');
+    
+    if (selectedValue) {
+        document.querySelectorAll('.dining-hall-option').forEach(option => {
+            option.style.display = 'none';
+        });
+        
+        document.getElementById(selectedValue).style.display = 'block';
+        diningHallOptions.style.display = 'block';
+        diningHallOptions.classList.remove('hide');
+        diningHallOptions.classList.add('fade-out');
+        setTimeout(() => {
+            diningHallOptions.classList.remove('fade-out')
+            diningHallOptions.style.display = 'none';
+        }, 5000);
+    }
+}
+
+document.querySelectorAll('#dietary-traits input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        if (!isRandomMenuDisplayed) {
+            fetchMenuData();
+        } else {
+            // If a random menu is displayed, you may want to refresh it based on the selected filters
+            generateRandomMenu(parseInt(document.getElementById('calorie-input').value));
+        }
     });
 });
