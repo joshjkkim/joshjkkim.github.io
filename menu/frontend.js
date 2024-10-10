@@ -18,7 +18,7 @@ async function fetchMenuData() {
     }).toString();
 
     try {
-        const response = await fetch(`https://dumdum9000.serveo.net/menu?diningHall=${diningHall}&${queryString}`);
+        const response = await fetch(`http://localhost:3000/menu?diningHall=${diningHall}&${queryString}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

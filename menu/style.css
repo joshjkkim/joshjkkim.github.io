@@ -235,6 +235,7 @@ input[type="text"]:focus {
     font-size: 14px;
 }
 
+#allergens,
 #filter-list,
 #nutrition-facts,
 #currently-ate,
