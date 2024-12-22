@@ -108,7 +108,6 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
 }
 
 .content {
@@ -131,19 +130,19 @@ section {
 }
 
 h1 {
-  font-size: 7rem; /* Larger font for the main heading */
+  font-size: clamp(2rem, 5vw, 7rem); /* Larger font for the main heading */
   margin-bottom: 20px;
   font-weight: 600; /* Bold font weight */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: clamp(3rem, 4vw, 4rem);
   font-weight: 0;
 }
 
 .typing-effect {
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
   margin-bottom: 30px;
   white-space: nowrap;
   line-height: 1;
@@ -160,7 +159,7 @@ h2 {
 
 h1.typing-effect {
   text-align: left; /* Keep the header aligned to the left */
-  font-size: 6.5rem;
+  font-size: clamp(5rem, 6vw, 6.5rem);
   width: 100%;
   margin-bottom: 20px;
 }
@@ -172,7 +171,7 @@ h1.typing-effect {
 }
 
 .social-icon {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 3vw, 2.5rem);
   color: #000000;
   transition: color 0.3s scale 1s ease;
 }
@@ -240,7 +239,7 @@ h1.typing-effect {
 }
 
 #projectText {
-  font-size: 2.8rem; /* Use rem units for scalability */
+  font-size: clamp(2.2rem, 3.5vw, 2.8rem); /* Use rem units for scalability */
 }
 
 /* Align Images in a Group */
@@ -253,13 +252,14 @@ h1.typing-effect {
 /* Skill Box */
 .skill-box {
   flex: 1;
-  width: 30rem;
+  width: 30rem; /* Fixed width for larger screens */
   padding: 15px 20px;
   margin: 10px;
   border-radius: 10px;
   background-color: rgba(100, 100, 100, 0.1);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   text-align: center;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Responsive font size */
 }
 
 .skill-box:hover {
@@ -268,6 +268,23 @@ h1.typing-effect {
   cursor: pointer;
 }
 
+/* Adjusting for smaller screens */
+@media screen and (max-width: 768px) {
+  .skill-box {
+    width: 100%; /* Make boxes full width on smaller screens */
+    padding: 10px 15px;
+    font-size: clamp(1.2rem, 3vw, 2rem); /* Smaller font size on mobile */
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 480px) {
+  .skill-box {
+    width: 100%; /* Full width on very small screens */
+    padding: 8px 12px;
+    font-size: clamp(1rem, 3.5vw, 1.8rem); /* Adjust font size further for very small screens */
+  }
+}
 .underline{
   text-decoration: underline;
 }

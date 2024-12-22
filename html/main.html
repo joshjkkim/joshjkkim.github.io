@@ -34,7 +34,7 @@
                   <i class="fab fa-linkedin"></i>
                 </a>
                 <a href="https://leetcode.com/jjkk28" target="_blank" class="social-icon" aria-label="LeetCode">
-                  <i class="fab fa-laptop-code"></i>
+                  <i class="fa-solid fa-code"></i>
                 </a>
               </div>
             </div>
@@ -48,7 +48,7 @@
     <section class="about">
         <div class="container">
           <div class="content">
-            <div class="text-content">
+            <div class="text-content" style="padding: clamp(1rem, 5vw, 3rem);">
                 <h2 class="typing-effect underline fade-in"><u>About Me</u></h2>
                 <p class="fade-in"><i class="fas fa-check-square"></i> University of Michigan: 2024-2028</p>
                 <p class="fade-in"><i class="fas fa-check-square"></i> Data Science and Economics Major</p>
@@ -61,56 +61,68 @@
         </div>
     </section>
     <div class="separator separator-2"></div>
+
     <section class="technologies">
-      <div class="container">
-        <h2 class="typing-effect underline"><u>Relevant Skills</u></h2>
+      <div class="text-content" style="max-height: 100px;">
+      <h2 class="typing-effect underline"><u>Relevant Skills</u></h2>
     </div>
-      <div class="container">
-        
+        <div class="container">
           <div class="text-content">
             
-            <p class="fade-in skill-box"> Javascript <i class="fab fa-js"></i></p>
-            <p class="fade-in skill-box"> HTML <i class="fab fa-html5"></i></p>
-            <p class="fade-in skill-box"> CSS <i class="fab fa-css3-alt"></i></p>
-            <p class="fade-in skill-box"> C++ <i class="devicon-cplusplus-plain"></i></p>
-            <p class="fade-in skill-box"> Node <i class="fab fa-node"></i></p>
+            
+              <p class="fade-in skill-box"> Javascript <i class="fab fa-js"></i></p>
+              <p class="fade-in skill-box"> HTML <i class="fab fa-html5"></i></p>
+              <p class="fade-in skill-box"> CSS <i class="fab fa-css3-alt"></i></p>
+              <p class="fade-in skill-box"> C++ <i class="devicon-cplusplus-plain"></i></p>
+              <p class="fade-in skill-box"> Node <i class="fab fa-node"></i></p>
+            
           </div>
           <div class="text-content">
-            <p class="fade-in skill-box"> GIT <i class="devicon-git-plain"></i></p>
-            <p class="fade-in skill-box"> React <i class="fab fa-react"></i></p>
-            <p class="fade-in skill-box"> Next <i class="devicon-nextjs-original"></i></p>
-            <p class="fade-in skill-box"> MongoDB <i class="simple-icons:mongodb"></i></p>
-            <p class="fade-in skill-box"> PostgreSQL <i class="devicon-postgresql-plain"></i></p>
+          <p class="fade-in skill-box"> GIT <i class="devicon-git-plain"></i></p>
+              <p class="fade-in skill-box"> React <i class="fab fa-react"></i></p>
+              <p class="fade-in skill-box"> Next <i class="devicon-nextjs-original"></i></p>
+              <p class="fade-in skill-box"> MongoDB <i class="simple-icons:mongodb"></i></p>
+              <p class="fade-in skill-box"> PostgreSQL <i class="devicon-postgresql-plain"></i></p>
           </div>
-      </div>
-      
+        </div>
   </section>
 
 <div class="separator separator-3"></div>
 
   <section class="projects">
+    <div class="text-content" style="max-height: 200px;">
         <h2 class="typing-effect underline"><u>Projects</u></h2>
-
+      </div>
     <!-- Owl Carousel -->
     <div class="owl-carousel">
         <div class="item" onclick="window.location.href='../html/about.html';">
             <p >
             <div class="image-group">
                 <img src="../photos/discord.png" alt="Discord Logo" />
-                <i class="fas fa-check-square"></i> Discord x Minecraft
+                <p style="font-size: 3rem;">Discord x Minecraft</p>
                 <img src="../photos/minecraft.png" alt="Minecraft Grass Block" id="mcblock"/>
             </div>
           </p>
+          <p style="font-size: 1rem;">⦿  Created a Discord bot using Node.js and Discord.js that can connect multiple Minecraft accounts,<br> allowing users to automate and control gameplay via Discord commands. <br><br>
+            ⦿  Integrated the Baritone library to enable pathfinding, implemented automatic crafting with the Minecraft API <br>using custom crafting trees, and added harvesting and combat capabilities. <br><br>
+            ⦿  Enhanced gameplay automation through pathfinding and Raytracing recognition to detect blocks or entities <br>within the player’s field of view, improving interaction precision and efficiency.
+            </p>
         </div>
         <div class="item" onclick="window.location.href='../menu/menu.html';">
-            <p >
+            <p>
                 
                 <div class="image-group">
                   <img src="../menu/southquad.jpg" alt="South Quad Dining Hall" />
-                  <i class="fas fa-check-square"></i> Michigan Dining Hall Nutrition Tracker
+                  <p style="font-size: 3rem;">Michigan Dining Hall Nutrition Tracker</p>
                   <img src="../menu/mosherjordan.jpg" alt="Mosher Jordan Dining Hall"/>
               </div>
             </p>
+            <p style="font-size: 1rem;">⦿  Developed a website to help users track and plan meals in advance based on <br>nutritional parameters (calories, protein, allergens, food restrictions) across all dining hall menus for that day. <br><br>
+              ⦿  Deployed a backend server using Express.js and CORS, which was initially hosted locally and later ssh’d to a public URL, <br>to scrape and retrieve menu data directly from Michigan Dining Hall websites. <br><br>
+              ⦿  Designed and implemented interactive features with raw HTML and CSS, including dynamic animations and media elements, <br>to allow users to easily click, track, and view nutritional information for menu items through Javascript. <br>
+              
+
+              </p>
         </div>
     </div>
 </section>

@@ -63,11 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         margin: 10,         // Space between items
         autoplay: true,
         autoplayTimeout: 10000,  // Set autoplay timeout
-        nav: true,
-        navText: [
-            "<i class='fa-solid fa-circle-left'></i>",  // Left arrow
-            "<i class='fa-solid fa-circle-right'></i>" // Right arrow
-          ],
         responsive: {
             0: {
                 items: 1      // 1 item on mobile screens

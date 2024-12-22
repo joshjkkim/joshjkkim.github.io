@@ -1,3 +1,5 @@
+
+
 let menuItems = []; 
 let isRandomMenuDisplayed = false; 
 
@@ -18,7 +20,12 @@ async function fetchMenuData() {
     }).toString();
 
     try {
-        const response = await fetch(`https://dumdum9000.serveo.net/menu?diningHall=${diningHall}&${queryString}`);
+        let response;
+        if(diningHall != "test") {
+        response = await fetch(`https://dumdum9000.serveo.net/menu?diningHall=${diningHall}&${queryString}`);
+        } else {
+            response = await fetch(`http://127.0.0.1:5500/menu/example.json`);
+        }
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

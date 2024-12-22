@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const distanceY = cloudY + rect.height / 2 - clickY;
             const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
 
-            if (distance < 200 && !cloud.classList.contains('blown')) {
+            if (distance < 100 && !cloud.classList.contains('blown')) {
                 cloud.style.position = 'absolute';
                 cloud.style.left = `${clickX - cloud.offsetWidth / 2}px`;
                 cloud.style.top = `${clickY - cloud.offsetHeight / 2}px`;
@@ -247,42 +247,42 @@ palmTrees.forEach(palmtree => {
 });
 
 
-const carImages = ['../photos/car1.gif', '../photos/car3.gif']; 
 const carSize = 200; 
 let carsStopSpawning = false;
+const carImages = ['../photos/car1.gif', '../photos/car3.gif'];
+const road = document.querySelector('.road');
+
 function spawnCar() {
-    
-    if (carsStopSpawning == true) return;
+    if (carsStopSpawning) return;
+
+
+    const roadRect = road.getBoundingClientRect();
+    const laneHeight = roadRect.height / 2; // Two lanes
 
     const car = document.createElement('div');
     car.classList.add('car');
 
-    const randomCarImage = carImages[getRandomInt(0, carImages.length - 1)];
+    const randomCarImage = carImages[Math.floor(Math.random() * carImages.length)];
     car.style.backgroundImage = `url('${randomCarImage}')`;
-    const randomSpeed = getRandomInt(5, 10); 
-    car.style.animationDuration = `${randomSpeed}s`;
 
-    const carYPosition = window.innerHeight - carSize
-    car.style.left = `${window.innerWidth}px`;
-    car.style.top = `65%`;
+    const isReversed = randomCarImage.includes('car3');
 
-    if(randomCarImage == '../photos/car3.gif') {
-        car.style.animation = 'drive 10s reverse linear';
-        const randomSpeed = getRandomInt(5, 10); // Between 5 and 10 seconds
-        car.style.animationDuration = `${randomSpeed}s`;
-        car.style.right = `${window.innerWidth}px`
-        car.style.top = `85%`;
-        car.style.width = '13%'
-        car.style.height = '13%'
-    }
+    // Adjust car size and positioning relative to the road
+    const carHeight = roadRect.height * 0.4; // Adjusted size
+    const carWidth = carHeight * 2; // Maintain aspect ratio
+
+    Object.assign(car.style, {
+        left: isReversed ? `${window.innerWidth}px` : `${window.innerWidth}px`, // Start offscreen
+        top: `${roadRect.top + (isReversed ? laneHeight + 15 : -30)}px`, // Slight downward adjustment
+        width: isReversed ? `${carWidth}px` : `${carWidth * 2.3}px`,
+        height: isReversed ? `${carHeight}px` : `${carHeight * 2.3}px`,
+        animation: isReversed ? 'drive 12s reverse linear' : 'drive 12s linear'
+    });
 
     document.body.appendChild(car);
-
-
-    setTimeout(() => {
-        car.remove();
-    }, randomSpeed * 1000); 
+    setTimeout(() => car.remove(), 12000); // Match animation duration
 }
+
 
 function startCarSpawning() {
     setInterval(() => {
@@ -295,3 +295,4 @@ function getRandomInt(min, max) {
 }
 
 startCarSpawning();
+
