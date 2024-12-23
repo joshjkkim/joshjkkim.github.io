@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 items: 1      // 1 item on mobile screens
             },
             600: {
-                items: 3      // 1 item on medium screens
+                items: 1      // 1 item on medium screens
             },
             1000: {
                 items: 1      // 1 item on larger screens
