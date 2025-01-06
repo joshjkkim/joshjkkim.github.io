@@ -22,7 +22,7 @@ async function fetchMenuData() {
     try {
         let response;
         if(diningHall != "test") {
-        response = await fetch(`http://18.191.206.196:3000///menu?diningHall=${diningHall}&${queryString}`);
+        response = await fetch(`http://18.191.206.196:3000/menu?diningHall=${diningHall}&${queryString}`);
         } else {
             response = await fetch(`https://joshjkkim.github.io/menu/example.json`);
         }
