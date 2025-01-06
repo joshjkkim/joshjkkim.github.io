@@ -22,9 +22,9 @@ async function fetchMenuData() {
     try {
         let response;
         if(diningHall != "test") {
-        response = await fetch(`https://dumdum9000.serveo.net/menu?diningHall=${diningHall}&${queryString}`);
+        response = await fetch(`http://18.191.206.196:3000///menu?diningHall=${diningHall}&${queryString}`);
         } else {
-            response = await fetch(`http://127.0.0.1:5500/menu/example.json`);
+            response = await fetch(`https://joshjkkim.github.io/menu/example.json`);
         }
         if (!response.ok) {
             throw new Error('Network response was not ok');
