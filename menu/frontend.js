@@ -21,11 +21,9 @@ async function fetchMenuData() {
 
     try {
         let response;
-        if(diningHall != "test") {
-        response = await fetch(`http://18.191.206.196:3000/menu?diningHall=${diningHall}&${queryString}`);
-        } else {
-            response = await fetch(`https://joshjkkim.github.io/menu/example.json`);
-        }
+
+        response = await fetch(`https://dumdum.work/menu?diningHall=${diningHall}&${queryString}`);
+
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
