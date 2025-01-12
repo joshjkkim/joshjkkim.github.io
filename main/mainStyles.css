@@ -63,12 +63,21 @@ section {
 
 /* Projects Section */
 .projects {
+  background: linear-gradient(180deg, #f6f6b9, #f6c9b9); /* Gray-green to very light gray */
+  background-size: 100% 200%; /* Ensuring gradient movement */
+  background-position: 50% 0%;
+  animation: gradientAnimationVertical 6s ease-in-out infinite;
+  padding: 60px 0;
+}
+
+.experience {
   background: linear-gradient(180deg, #c8e2a6, #f6f6b9); /* Gray-green to very light gray */
   background-size: 100% 200%; /* Ensuring gradient movement */
   background-position: 50% 0%;
   animation: gradientAnimationVertical 6s ease-in-out infinite;
   padding: 60px 0;
 }
+
 
 
 .separator {
@@ -92,6 +101,10 @@ section {
 
 .separator-3 {
   background-image: url('../menu/northquad.jpg');
+}
+
+.separator-4 {
+  background-image: url('../menu/mosherjordan.jpg');
 }
 
 @keyframes gradientAnimationVertical {
@@ -269,7 +282,7 @@ h1.typing-effect {
 .skill-box {
   flex: 1;
   width: 30rem; /* Fixed width for larger screens */
-  padding: 15px 20px;
+  padding: 7px 10px;
   margin: 10px;
   border-radius: 10px;
   background-color: rgba(100, 100, 100, 0.1);
