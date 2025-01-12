@@ -60,9 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     $(".owl-carousel").owlCarousel({
         items: 1,           // Show 1 item by default (even for larger screens)
         loop: true,
-        margin: 10,         // Space between items
+        margin: 10,        
         autoplay: true,
-        autoplayTimeout: 10000,  // Set autoplay timeout
+        autoplayTimeout: 5000,  // Set autoplay timeout
         responsive: {
             0: {
                 items: 1      // 1 item on mobile screens

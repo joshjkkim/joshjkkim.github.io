@@ -161,12 +161,17 @@
 
 <div class="separator separator-4"></div>
 
-  <section class="projects" id="projects">
-    <div class="text-content" style="max-height: 200px;">
+  <section class="projects" id="projects" style="align-items: center;">
+    <div class="text-content" style="max-height: 200px; padding: clamp(1.2rem, 2vw, 2rem);">
         <h2 class="typing-effect underline"><u>Projects</u></h2>
       </div>
+      <div class="container" style="padding: clamp(1.2rem, 2vw, 2rem); text-align: center;">
+        <div class="text-content" style="font-size: clamp(0.8rem, 2vw, 1.5rem); text-align: center;">
+            <p class="fade-in"><i class="fa-regular fa-lightbulb"></i> Over my time programmming, I have made some cool <br>creations, <strong style="font-size: clamp(1.1rem, 2.5vw, 1.8rem);">click</strong> each project to check them out!</p>
+      </div>
+    </div>
     <!-- Owl Carousel -->
-    <div class="owl-carousel">
+    <div class="owl-carousel" style="width: 80%;">
         <div class="item" onclick="window.location.href='../main/minecraft';">
             <p >
             <div class="image-group">
@@ -180,7 +185,6 @@
         </div>
         <div class="item" onclick="window.location.href='../main/menu';">
             <p>
-                
                 <div class="image-group">
                   <img src="../menu/southquad.jpg" alt="South Quad Dining Hall" />
                   <p style="font-size: clamp(1.5rem, 2.5vw, 3rem);">Michigan Dining Hall Nutrition Tracker</p>
@@ -191,6 +195,18 @@
               This project is glorified Web Scraping that allows people to track their nutrition or just make meals based off constraints
               </p>
         </div>
+        <div class="item" onclick="window.location.href='../main/pitlogger';">
+          <p>
+              <div class="image-group">
+                <img src="../photos/hypixel.png" alt="Hypixel Logo" />
+                <p style="font-size: clamp(1.5rem, 2.5vw, 3rem);">Hypixel Pit Player Tracker and Logger</p>
+                <img src="../photos/dirtblock.jpeg" alt="Minecraft Dirt Block"/>
+            </div>
+          </p>
+          <p style="font-size: clamp(0.5rem, 2.5vw, 1rem);">
+            Small Project that turned relatively complex based off a game that I liked in Minecraft.
+            </p>
+      </div>
 
     </div>
 </section>

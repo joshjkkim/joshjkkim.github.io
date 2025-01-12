@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Kim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="/main/mainProjects.css"> 
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">
+          <img src="/photos/catlogo.jpeg" alt="Joshua Kim Logo" class="logo-image" onclick="location.href='/main/#home'">
+        </div>
+        <div class="nav-links">
+            <a href="/main/#home">Home</a>
+            <a href="/main/#about">About</a>
+            <a href="/main/#skills">Skills</a>
+            <a href="/main/#experience">Experience</a>
+            <a href="/main/#projects">Projects</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="goto-button" onclick="location.href='https://discord.gg/4DczvhXR62'">Click Here To Go To the Discord Server!</button>
+
+        <button class="goto-button" style="background-color: #2b652d;" onclick="location.href='https://github.com/joshjkkim/pit-logger'">Click Here For The Repository</button>
+        
+        <div class="image-group">
+            <img src="/photos/discord.png" alt="Discord Logo" class="responsive-image" id="discordLogo"/>
+            <img src="/photos/dirtblock.jpeg" alt="ChatGPT Logo" class="responsive-image" id="chatgptLogo"/>
+            <img src="/photos/minecraft.png" alt="Minecraft Grass Block" class="responsive-image" id="mcblock"/>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Skills Used</h3>
+        <div class="skill-box-group">
+            <p class="fade-in skill-box">Docker <i class="fab fa-docker"></i></p>
+            <p class="fade-in skill-box">AWS EC2 <i class="fas fa-cloud"></i></p>
+            <p class="fade-in skill-box">Javascript <i class="fab fa-js"></i></p>
+            <p class="fade-in skill-box">Node <i class="fab fa-node"></i></p>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Description</h3>
+        <div class="text-content">
+            <p>
+                Hypixel Pit is a gamemode on the largest Minecraft server: Hypixel<br>
+                To summarize the gamemode here is a short video: <br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Ms_TFKPN0RA?si=_8xAsfE3p6aziENK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> <br>
+                This gamemode is the closest thing to pure anarchy and fighting within this server and has grown quite the cult following <br>
+                Therefore it was inevitable that many enemies and alliances were to be formed. <br><br>
+                So I created this script that utilizes mineflayer.js and discord.js to control several minecraft bot accounts <br>
+                That seek and find individual pit lobbies and log all active players<br>
+                Beyond the complex sorting system of which bots find individual servers, there is a reminding system <br>
+                So that users will get pinged if certain users get online and can use commands to be notified for specific players<br>
+                This is hosted on an EC2 Instance using Docker to host the server.
+            </p>
+        </div>
+    </div>
+    
+    <script src="minecraftMain.js"></script>
+  
+</body>
+</html>

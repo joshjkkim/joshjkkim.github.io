@@ -347,8 +347,6 @@ h1.typing-effect {
     max-width: 500px;
     height: auto;
   }
-
-  /* Adjust carousel button size for mobile */
   
 
   .skill-box {
@@ -360,20 +358,14 @@ h1.typing-effect {
 
 /* Adjust the Owl Carousel items */
 .owl-carousel .item {
-  background: rbg(0, 0, 0, 0.1);
-  padding: 20px 10px;  /* Reduce padding around the content */
+  /* Reduce padding around the content */
+  padding: 20px 10px;
   text-align: center;
   color: #333333;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  width: 100%;
   box-sizing: border-box;
-  min-height: 200px; /* Reduce min-height to prevent too large items */
-  margin: 0 15px;  /* Margin between items */
-  box-shadow: rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 1);
 }
 
 /* Adjust project titles */
@@ -406,12 +398,17 @@ h1.typing-effect {
 
 /* Adjust shadows and hover effect */
 .owl-carousel .item {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
   transition: transform 0.3s ease;
 }
 
 .owl-carousel .item:hover {
   transform: scale(1.02); /* Slight zoom on hover */
+  background: rgba(34,139,34,0.2);
 }
 
 /* Adjust the section to create spacing around the carousel */

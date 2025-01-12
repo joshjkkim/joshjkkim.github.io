@@ -153,7 +153,7 @@ window.onload = fillBackgroundGrid;
 
 const lever = document.querySelector('.lever');
 const netherportal = document.querySelector('.netherportal');
-const video = document.querySelector('.video');
+const video = document.querySelector('.videoContainer');
 const painting = document.querySelector('.painting');
 const signPortal = document.querySelector('.signPortal');
 const signLever = document.querySelector('.signLever');
@@ -236,30 +236,39 @@ const body = document.querySelector('body');
 body.style.backgroundImage = `url(${randomBG})`;
 body.style.backgroundSize = 'cover'
 
-let videoChoice = 0
-const videoList = [
-    '../photos/video.mp4',
-    '../photos/mcvid2.mov',
-    '../photos/mcbotvid3.mp4',
-    '../photos/pitvid1.mov',
-]
+const iframeList = [
+    `<iframe width="560" height="315" src="https://www.youtube.com/embed/jMv8xG_hbZk?si=lIh7crccL7UYGEsw&amp;controls=0" 
+    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+    `<iframe width="560" height="315" src="https://www.youtube.com/embed/jkWz2O0Obds?si=UGJWWjGA7Okui1i0&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+    `<iframe width="560" height="315" src="https://www.youtube.com/embed/oFiowe-09hY?si=s1vEA9mabnMNaGd_&amp;controls=0" 
+    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+];
 
 const signList = [
     '../photos/signdemo1.png',
     '../photos/signdemo2.png',
-    '../photos/signdemo4.png',
     '../photos/signdemo3.png',
-]
+];
+
+let videoChoice = 0; // Make sure this is initialized
 
 compass.addEventListener('click', () => {
-    videoChoice++
-    compass.style.animation = "scale 0.15s ease-in-out alternate"
-    if(videoChoice > videoList.length - 1) {
-        videoChoice = 0
+    videoChoice++;
+    compass.style.animation = "scale 0.15s ease-in-out alternate";
+    
+    if (videoChoice > iframeList.length - 1) {
+        videoChoice = 0;
     }
-        video.style.backgroundImage = `url(${videoList[videoChoice]})`;
-        signDemo.style.backgroundImage = `url(${signList[videoChoice]})`;
-        setTimeout(() => {
-            compass.style.animation = "none"
-        }, 50)
-})
+
+    // Update the videoContainer with the selected iframe
+    video.innerHTML = iframeList[videoChoice];
+
+    // Update the signDemo with the corresponding image
+    signDemo.style.backgroundImage = `url(${signList[videoChoice]})`;
+
+    setTimeout(() => {
+        compass.style.animation = "none";
+    }, 50);
+});

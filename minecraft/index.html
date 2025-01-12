@@ -90,12 +90,8 @@
             position: absolute;
         }
 
-        .video {
+        .videoContainer {
             position: relative;
-            background: url('../photos/video.mp4') no-repeat center center;
-            background-size: cover;
-            width: 43vw;
-            height: 35vw;
             z-index: 4;
             display: none;
             animation: slideOutFromTop 5s ease-out forwards;
@@ -258,7 +254,11 @@
         <div class="lever"></div>
     </div>
     <div class="painting"></div>
-    <div class="video"></div>
+    <div class="videoContainer">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jMv8xG_hbZk?si=lIh7crccL7UYGEsw&amp;controls=0" 
+    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
     <div class="compass"></div>
     <div class="signDemo"></div>
     <div class="signBG"></div>
