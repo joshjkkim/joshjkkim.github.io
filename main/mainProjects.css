@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend');
+
+* {
+  font-family: 'Lexend', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.2s linear;
+  text-decoration: none;
+}
+
+/* Body and Background Styling */
+html, body {
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, #eeeeee, #8ddbff 50%, #ffd4c0);
+  background-size: 100% 200%;
+  background-position: 50% 0%;
+  animation: gradientAnimationVertical 6s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes gradientAnimationVertical {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes dropDownFadeIn {
+  0% {
+    transform: translateY(-200%);
+    opacity: 0
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1
+  }
+}
+
+/* Container Styling */
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(0.5rem, 4vw, 10rem);
+  gap: 1.5rem;
+}
+
+/* Text Content */
+.text-content {
+  text-align: center;
+  color: #000;
+  font-size: clamp(0.5rem, 4vw, 1.5rem);
+  line-height: 1.5;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  padding-left: clamp(3rem, 2vw, 17rem);
+  padding-right: clamp(3rem, 2vw, 17rem);
+}
+
+/* Images */
+.image-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.image-group img {
+  max-width: 10%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+  animation: dropDownFadeIn 2.5s ease forwards;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#mcblock, #discordLogo, #chatgptLogo {
+  max-width: 10%;
+  height: auto;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+  animation: dropDownFadeIn 2.5s ease forwards;
+}
+
+#mcblock:hover, #discordLogo:hover, #chatgptLogo:hover {
+  transform: scale(1.1);
+}
+
+.fire-block {
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1;
+  position: fixed; /* Make fire blocks stick to the bottom of the screen */
+}
+
+/* Skill Boxes */
+.skill-box-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  animation: dropDownFadeIn 2.5s ease forwards alternate;
+}
+
+.skill-box {
+  padding: 10px 20px;
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: #fff;
+  background-color: rgba(100, 100, 100, 0.1);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.skill-box:hover {
+  transform: scale(1.05);
+  background-color: #0072b1;
+}
+
+/* Button */
+.goto-button {
+  margin-top: 4.5rem;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.goto-button:hover {
+  transform: scale(1.1);
+  background-color: #0072b1;
+}
+
+@media (max-width: 768px) {
+  .image-group, .skill-box-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #mcblock, #discordLogo, #chatgptLogo {
+    max-width: 30%; /* Scale images for smaller screens */
+  }
+
+  .skill-box {
+    width: 90%; /* Full width skill boxes on mobile */
+  }
+
+  .text-content {
+    font-size: clamp(0.5rem, 3vw, 1rem); /* Smaller text for mobile */
+  }
+
+  .goto-button {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    padding: 10px 20px;
+  }
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-size: 100% 200%; /* Ensuring gradient movement */
+  background-position: 50% 0%;
+  animation: gradientAnimationHorizontal 4s ease-in-out infinite;
+  padding: 0.5rem 1rem;
+  position: fixed; /* Makes the navbar sticky */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays above other content */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4)
+}
+
+.navbar a {
+  text-decoration: none;
+  background: linear-gradient(0deg, #355a59, #253d2a);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientAnimationVertical 4s ease-in-out infinite;
+  background-size: 100% 400%;
+  padding: 0.5rem 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.navbar a:hover {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-image {
+  height: 3.5rem; /* Adjust height to fit your navbar */
+  width: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Optional: Makes the image circular */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: linear-gradient(180deg, #203449, #ffffff); /* Lighter slate gray to soft sky blue */
+  background-size: 100% 200%; /* Ensuring gradient movement */
+  background-position: 50% 0%;
+  animation: gradientAnimationVertical 6s ease-in-out infinite; 
+  margin: 3px 0;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent background */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 30%;
+    text-align: right;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Box shadow for differentiation */
+    border-radius: 8px; /* Rounded edges for a smoother look */
+    opacity: 0; /* Start hidden */
+    transform: translateY(-10px); /* Start slightly above */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links.active {
+    display: flex;
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide into position */
+}
+
+.nav-links a {
+    animation: cascade 0.4s ease forwards; /* Cascading animation */
+    opacity: 0; /* Initially hidden */
+}
+
+/* Add a delay for each link to cascade in */
+.nav-links a:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.nav-links a:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.nav-links a:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.nav-links a:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Animation for cascading links */
+@keyframes cascade {
+    from {
+        transform: translateX(20px); /* Start slightly to the right */
+        opacity: 0; /* Fully transparent */
+    }
+    to {
+        transform: translateX(0); /* Move into position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+  .hamburger {
+      display: flex;
+  }
+}

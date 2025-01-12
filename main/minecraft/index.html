@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Kim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="/main/mainProjects.css"> 
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">
+          <img src="/photos/catlogo.jpeg" alt="Joshua Kim Logo" class="logo-image" onclick="location.href='/main/#home'">
+
+        </div>
+        <div class="nav-links">
+            <a href="/main/#home">Home</a>
+            <a href="/main/#about">About</a>
+            <a href="/main/#skills">Skills</a>
+            <a href="/main/#projects">Projects</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="goto-button" onclick="location.href='/minecraft'">Click Here To Go To Its Own Demonstration Page</button>
+        
+        <div class="image-group">
+            <img src="/photos/discord.png" alt="Discord Logo" class="responsive-image" id="discordLogo"/>
+            <img src="/photos/chatgpt.png" alt="ChatGPT Logo" class="responsive-image" id="chatgptLogo"/>
+            <img src="/photos/minecraft.png" alt="Minecraft Grass Block" class="responsive-image" id="mcblock"/>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Skills Used</h3>
+        <div class="skill-box-group">
+            <p class="fade-in skill-box">Javascript <i class="fab fa-js"></i></p>
+            <p class="fade-in skill-box">Node <i class="fab fa-node"></i></p>
+            <p class="fade-in skill-box">OpenAI <i class="fa-solid fa-robot"></i></p>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Description</h3>
+        <div class="text-content">
+            <p>
+                Created a Discord bot using Node.js and Discord.js that can connect multiple Minecraft accounts,
+                allowing users to automate and control gameplay via Discord commands. <br><br>
+                Integrated the Baritone library to enable pathfinding, implemented automatic crafting with the Minecraft API 
+                using custom crafting trees, and added harvesting and combat capabilities. <br><br>
+                Enhanced gameplay automation through pathfinding and Raytracing recognition to detect blocks or entities 
+                within the player’s field of view, improving interaction precision and efficiency.  <br><br>
+                Prompt engineered using ChatGPT API to become a fully functional personality and assistant to the player. <br><br>
+                Bot has its own sequential and procedural task generation using the commands it has listed to assess prompts and follow in order. <br><br>
+            </p>
+        </div>
+    </div>
+    
+    <script src="minecraftMain.js"></script>
+  
+</body>
+</html>

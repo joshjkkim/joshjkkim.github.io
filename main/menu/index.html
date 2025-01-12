@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Kim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="/main/mainProjects.css"> 
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">
+          <img src="/photos/catlogo.jpeg" alt="Joshua Kim Logo" class="logo-image" onclick="location.href='/main/#home'">
+
+        </div>
+        <div class="nav-links">
+            <a href="/main/#home">Home</a>
+            <a href="/main/#about">About</a>
+            <a href="/main/#skills">Skills</a>
+            <a href="/main/#projects">Projects</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="goto-button" onclick="location.href='/minecraft'">Click Here To Go To the Actual Menu!</button>
+        
+        <div class="image-group">
+            <img src="/menu/mosherjordan.jpg" alt="Mosher Jordan" class="responsive-image" id="mosherJordan"/>
+            <img src="/menu/southquad.jpg" alt="South Quad" class="responsive-image" id="southQuad"/>
+            <img src="/menu/eastquad.jpg" alt="East Quad" class="responsive-image" id="eastQuad"/>
+            <img src="/menu/bursley.jpg" alt="Bursley" class="responsive-image" id="bursley"/>
+            <img src="/menu/northquad.jpg" alt="North Quad" class="responsive-image" id="northQuad"/>
+            <img src="/menu/markley.jpg" alt="Markley" class="responsive-image" id="markely"/>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Skills Used</h3>
+        <div class="skill-box-group">
+            <p class="fade-in skill-box">Docker <i class="fab fa-docker"></i></p>
+            <p class="fade-in skill-box">NGINX <i class="fas fa-server"></i></p>
+            <p class="fade-in skill-box">AWS EC2 <i class="fas fa-cloud"></i></p>
+            <p class="fade-in skill-box">HTML/CSS <i class="fab fa-html5"></i></p>
+        </div>
+        <div class="skill-box-group">
+            <p class="fade-in skill-box">Javascript <i class="fab fa-js"></i></p>
+            <p class="fade-in skill-box">Node <i class="fab fa-node"></i></p>
+            <p class="fade-in skill-box">Express.js <i class="fa-brands fa-node-js"></i></p>
+            <p class="fade-in skill-box">CORS <i class="fas fa-shield-alt"></i></p>
+            <p class="fade-in skill-box">Puppeteer <i class="fas fa-robot"></i></p>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Description</h3>
+        <div class="text-content">
+            <p>
+                Created a functional website that allows users to track and plan their meals <br>
+                Essentially how it works is that the server runs on an EC2 instance using linux to run the node server <br>
+                However because the linux server is so old I had to essentially learn docker in order for the correct dependencies to run <br>
+                That was a fun experience yet it taught me how AMAZING it is and how easy Docker makes my life and transporting files <br>
+                Anyhow the script consists of Scraping the Michigan Dining Hall pages using Puppeteer.js then I Port it to Port 3000 using Express.js and CORS <br>
+                however the most complicated problem was that my EC2 Server's public url was under HTTP so I had to learn how to move it to HTTPS <br>
+                using NGINX and purchasing a domain and what not but it ended up well. <br><br>
+                The frontend is raw HTML and CSS and primarily consists of multiple selections and features to select menus from different dining halls,<br>
+                Curate a custom generated menu based on nutrition parameters, and track your macros. 
+            </p>
+        </div>
+    </div>
+    
+    <script src="minecraftMain.js"></script>
+  
+</body>
+</html>

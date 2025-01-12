@@ -76,3 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    navLinks.classList.toggle('active');
+
+    // Trigger animations for links when menu is toggled
+    if (navLinks.classList.contains('active')) {
+        links.forEach(link => {
+            link.style.animation = '';
+            setTimeout(() => {
+                link.style.animation = ''; // Reset animation to allow retriggering
+            }, 0);
+        });
+    }
+}

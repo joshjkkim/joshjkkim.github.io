@@ -13,6 +13,7 @@
 html, body {
   height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 section {
@@ -33,7 +34,7 @@ section {
   opacity: 0; /* Initial opacity for fade-in effect */
   transform: scale(0.9); /* Start slightly scaled down */
   transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-  background: linear-gradient(180deg, #708090, #A1B4C4); /* Lighter slate gray to soft sky blue */
+  background: linear-gradient(180deg, #caeaf5, #aab3ee); /* Lighter slate gray to soft sky blue */
   background-size: 100% 200%; /* Ensuring gradient movement */
   background-position: 50% 0%;
   animation: gradientAnimationVertical 6s ease-in-out infinite; /* Smooth gradient animation */
@@ -42,7 +43,7 @@ section {
 
 /* About Section */
 .about {
-  background: linear-gradient(180deg, #6C7D8C, #8BA9A5); /* Muted slate to soft sage green */
+  background: linear-gradient(180deg, #aab3ee, #a5dfd8); /* Muted slate to soft sage green */
   background-size: 100% 200%; /* Ensuring gradient movement */
   background-position: 50% 0%;
   animation: gradientAnimationVertical 6s ease-in-out infinite;
@@ -51,7 +52,7 @@ section {
 
 /* Technologies Section */
 .technologies {
-  background: linear-gradient(180deg, #8BA9A5, #C2CBB6); /* Sage green to soft gray-green */
+  background: linear-gradient(180deg, #a5dfd8, #c8e2a6); /* Sage green to soft gray-green */
   background-size: 100% 200%; /* Ensuring gradient movement */
   background-position: 50% 0%;
   animation: gradientAnimationVertical 6s ease-in-out infinite;
@@ -60,7 +61,7 @@ section {
 
 /* Projects Section */
 .projects {
-  background: linear-gradient(180deg, #C2CBB6, #E8E8E8); /* Gray-green to very light gray */
+  background: linear-gradient(180deg, #c8e2a6, #f6f6b9); /* Gray-green to very light gray */
   background-size: 100% 200%; /* Ensuring gradient movement */
   background-position: 50% 0%;
   animation: gradientAnimationVertical 6s ease-in-out infinite;
@@ -100,6 +101,18 @@ section {
   }
   100% {
     background-position: 0% 0%;
+  }
+}
+
+@keyframes gradientAnimationHorizontal {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -159,7 +172,7 @@ h2 {
 
 h1.typing-effect {
   text-align: left; /* Keep the header aligned to the left */
-  font-size: clamp(5rem, 6vw, 6.5rem);
+  font-size: clamp(2rem, 6vw, 7rem);
   width: 100%;
   margin-bottom: 20px;
 }
@@ -390,41 +403,137 @@ h1.typing-effect {
   padding: 30px 15px; /* Adjust padding on the section */
 }
 
-/* Style the navigation container */
-.owl-nav {
-  position: absolute;
-  top: -7rem; /* Position the buttons closer to the header */
-  width: 100%;
-  pointer-events: none; /* Prevent interference with clicks */
-}
 
-/* Style individual navigation buttons */
-.owl-nav .owl-prev,
-.owl-nav .owl-next {
-  position: absolute; /* Allow absolute positioning */
-  color: #333333; /* Semi-transparent background */
-  color: white;
-  border-radius: 50%;
+.navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  pointer-events: all; /* Allow clicks */
+  background-color: rgba(0, 0, 0, 0.1);
+  background-size: 100% 200%; /* Ensuring gradient movement */
+  background-position: 50% 0%;
+  animation: gradientAnimationHorizontal 4s ease-in-out infinite;
+  padding: 0.5rem 1rem;
+  position: fixed; /* Makes the navbar sticky */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays above other content */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4)
+}
+
+.navbar a {
+  text-decoration: none;
+  background: linear-gradient(0deg, #355a59, #253d2a);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientAnimationVertical 4s ease-in-out infinite;
+  background-size: 100% 400%;
+  padding: 0.5rem 1rem;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.navbar a:hover {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-image {
+  height: 3.5rem; /* Adjust height to fit your navbar */
+  width: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Optional: Makes the image circular */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
   cursor: pointer;
-  transition: background-color 0.3s ease transform 1s ease-in-out;
 }
 
-.owl-nav .owl-prev:hover,
-.owl-nav .owl-next:hover {
-  color: #0072b1; /* Fully opaque on hover */
-  transform: scale(1.3);
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: linear-gradient(180deg, #203449, #ffffff); /* Lighter slate gray to soft sky blue */
+  background-size: 100% 200%; /* Ensuring gradient movement */
+  background-position: 50% 0%;
+  animation: gradientAnimationVertical 6s ease-in-out infinite; 
+  margin: 3px 0;
 }
 
-/* Positioning for buttons relative to the carousel */
-.owl-nav .owl-prev {
-  left: 35rem; /* Position on the left */
+/* Add top margin to the rest of the page content */
+.content {
+  margin-top: 70px; /* Same as navbar height to avoid overlap */
+  padding: 1rem;
 }
 
-.owl-nav .owl-next {
-  right: 35rem; /* Position on the right */
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent background */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 30%;
+    text-align: right;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Box shadow for differentiation */
+    border-radius: 8px; /* Rounded edges for a smoother look */
+    opacity: 0; /* Start hidden */
+    transform: translateY(-10px); /* Start slightly above */
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.nav-links.active {
+    display: flex;
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide into position */
+}
+
+.nav-links a {
+    animation: cascade 0.4s ease forwards; /* Cascading animation */
+    opacity: 0; /* Initially hidden */
+}
+
+/* Add a delay for each link to cascade in */
+.nav-links a:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.nav-links a:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.nav-links a:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.nav-links a:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Animation for cascading links */
+@keyframes cascade {
+    from {
+        transform: translateX(20px); /* Start slightly to the right */
+        opacity: 0; /* Fully transparent */
+    }
+    to {
+        transform: translateX(0); /* Move into position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+  .hamburger {
+      display: flex;
+  }
+}

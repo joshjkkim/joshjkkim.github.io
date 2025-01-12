@@ -12,20 +12,40 @@
 <!-- Include Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joshua Kim</title>
-    <link rel="stylesheet" href="../styles/mainStyles.css"> 
+    <link rel="stylesheet" href="mainStyles.css"> 
+    <link rel="icon" type="image/jpeg" href="/photos/catlogo.jpeg">
 </head>
 <body>
-    <section class="first">
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/photos/catlogo.jpeg" alt="Joshua Kim Logo" class="logo-image" onclick="location.href='/main/#home'">
+
+    </div>
+    <div class="nav-links">
+        <a href="/main/#home">Home</a>
+        <a href="/main/#about">About</a>
+        <a href="/main/#skills">Skills</a>
+        <a href="/main/#projects">Projects</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</nav>
+    <section class="first" id="home">
         <div class="container">
           <div class="content">
             <div class="text-content">
-              <h1 class="typing-effect">Hi I'm <span class="underline">Joshua Kim</span></h1>
+              <h1 class="typing-effect">Hi, I'm <span class="underline">Joshua Kim</span></h1>
               <div class="social-icons">
                 <a href="https://github.com/dumdum9000" target="_blank" class="social-icon" aria-label="GitHub">
                   <i class="fab fa-github"></i>
@@ -45,14 +65,17 @@
         </div>
       </section>
       <div class="separator separator-1"></div>
-    <section class="about">
+    <section class="about" id="about">
         <div class="container">
           <div class="content">
-            <div class="text-content" style="padding: clamp(1rem, 5vw, 3rem);">
+            <div class="text-content" style="font-size: clamp(1.2rem, 3vw, 2rem);">
                 <h2 class="typing-effect underline fade-in"><u>About Me</u></h2>
                 <p class="fade-in"><i class="fas fa-check-square"></i> University of Michigan: 2024-2028</p>
                 <p class="fade-in"><i class="fas fa-check-square"></i> Data Science and Economics Major</p>
                 <p class="fade-in"><i class="fas fa-check-square"></i> LSA Honors Ambassador</p>
+                <br>
+                <p class="fade-in"><i class="fa-solid fa-hands-clapping"></i> Hi! I'm Joshua Kim. I'm always eager to evolve my programming skills and to 
+                  contribute to real-world scenarios. I am always open to new opportunities, meet new people, and <span class="underline">internships</span> 👀</p>
             </div>
             <div class="image-content">
                 <img src="../photos/blockm.png" alt="Michigan Block M" id="blockm" />
@@ -62,26 +85,34 @@
     </section>
     <div class="separator separator-2"></div>
 
-    <section class="technologies">
+    <section class="technologies" id="skills">
       <div class="text-content" style="max-height: 100px;">
       <h2 class="typing-effect underline"><u>Relevant Skills</u></h2>
     </div>
+    <div class="container">
+      <div class="text-content" style="max-height: 100px;">
+        
+      </div>
+    </div>
+    <div class="container" style="padding: clamp(1.2rem, 2vw, 2rem); text-align: center;">
+        <div class="text-content" style="font-size: clamp(1.2rem, 2vw, 2rem); text-align: center;">
+            <p class="fade-in"><i class="fa-regular fa-lightbulb"></i> I am always learning and trying new technologies, here are <br>some that I have utilized in my recent experience</p>
+      </div>
+    </div>
         <div class="container">
           <div class="text-content">
-            
-            
               <p class="fade-in skill-box"> Javascript <i class="fab fa-js"></i></p>
-              <p class="fade-in skill-box"> HTML <i class="fab fa-html5"></i></p>
-              <p class="fade-in skill-box"> CSS <i class="fab fa-css3-alt"></i></p>
+              <p class="fade-in skill-box"> HTML/CSS <i class="fab fa-html5"></i></p>
+              <p class="fade-in skill-box"> GIT <i class="devicon-git-plain"></i></p>
               <p class="fade-in skill-box"> C++ <i class="devicon-cplusplus-plain"></i></p>
               <p class="fade-in skill-box"> Node <i class="fab fa-node"></i></p>
             
           </div>
           <div class="text-content">
-          <p class="fade-in skill-box"> GIT <i class="devicon-git-plain"></i></p>
               <p class="fade-in skill-box"> React <i class="fab fa-react"></i></p>
-              <p class="fade-in skill-box"> Next <i class="devicon-nextjs-original"></i></p>
-              <p class="fade-in skill-box"> MongoDB <i class="simple-icons:mongodb"></i></p>
+              <p class="fade-in skill-box"> Express <i class="devicon-express-original"></i></p>
+              <p class="fade-in skill-box"> Docker <i class="fab fa-docker"></i></p>
+              <p class="fade-in skill-box"> MongoDB <i class="devicon-mongodb-plain-wordmark"></i></p>
               <p class="fade-in skill-box"> PostgreSQL <i class="devicon-postgresql-plain"></i></p>
           </div>
         </div>
@@ -89,13 +120,13 @@
 
 <div class="separator separator-3"></div>
 
-  <section class="projects">
+  <section class="projects" id="projects">
     <div class="text-content" style="max-height: 200px;">
         <h2 class="typing-effect underline"><u>Projects</u></h2>
       </div>
     <!-- Owl Carousel -->
     <div class="owl-carousel">
-        <div class="item" onclick="window.location.href='../html/about.html';">
+        <div class="item" onclick="window.location.href='../main/minecraft';">
             <p >
             <div class="image-group">
                 <img src="../photos/discord.png" alt="Discord Logo" />
@@ -103,12 +134,10 @@
                 <img src="../photos/minecraft.png" alt="Minecraft Grass Block" id="mcblock"/>
             </div>
           </p>
-          <p style="font-size: clamp(0.5rem, 2.5vw, 1rem);">⦿  Created a Discord bot using Node.js and Discord.js that can connect multiple Minecraft accounts,<br> allowing users to automate and control gameplay via Discord commands. <br><br>
-            ⦿  Integrated the Baritone library to enable pathfinding, implemented automatic crafting with the Minecraft API <br>using custom crafting trees, and added harvesting and combat capabilities. <br><br>
-            ⦿  Enhanced gameplay automation through pathfinding and Raytracing recognition to detect blocks or entities <br>within the player’s field of view, improving interaction precision and efficiency.
+          <p style="font-size: clamp(1rem, 2.5vw, 1.5rem);"> Another ChatGPT wrapper project yet it's an autonomous <br>MINECRAFT BOT
             </p>
         </div>
-        <div class="item" onclick="window.location.href='../menu/menu.html';">
+        <div class="item" onclick="window.location.href='../main/menu';">
             <p>
                 
                 <div class="image-group">
@@ -117,37 +146,16 @@
                   <img src="../menu/mosherjordan.jpg" alt="Mosher Jordan Dining Hall"/>
               </div>
             </p>
-            <p style="font-size: clamp(0.5rem, 2.5vw, 1rem);">⦿  Developed a website to help users track and plan meals in advance based on <br>nutritional parameters (calories, protein, allergens, food restrictions) across all dining hall menus for that day. <br><br>
-              ⦿  Deployed a backend server using Express.js and CORS, which was initially hosted locally and later ssh’d to a public URL, <br>to scrape and retrieve menu data directly from Michigan Dining Hall websites. <br><br>
-              ⦿  Designed and implemented interactive features with raw HTML and CSS, including dynamic animations and media elements, <br>to allow users to easily click, track, and view nutritional information for menu items through Javascript. <br>
-              
-
+            <p style="font-size: clamp(0.5rem, 2.5vw, 1rem);">
+              This project is glorified Web Scraping that allows people to track their nutrition or just make meals based off constraints
               </p>
         </div>
-        <div class="item" onclick="window.location.href='../html/about.html';">
-          <p >
-          <div class="image-group">
-              <img src="../photos/discord.png" alt="Discord Logo" />
-              <p style="font-size: clamp(1.5rem, 2.5vw, 3rem);">Discord x Minecraft</p>
-              <img src="../photos/minecraft.png" alt="Minecraft Grass Block" id="mcblock"/>
-          </div>
-        </p>
-        <p style="font-size: clamp(0.5rem, 2.5vw, 1rem);">⦿  Created a Discord bot using Node.js and Discord.js that can connect multiple Minecraft accounts,<br> allowing users to automate and control gameplay via Discord commands. <br><br>
-          ⦿  Integrated the Baritone library to enable pathfinding, implemented automatic crafting with the Minecraft API <br>using custom crafting trees, and added harvesting and combat capabilities. <br><br>
-          ⦿  Enhanced gameplay automation through pathfinding and Raytracing recognition to detect blocks or entities <br>within the player’s field of view, improving interaction precision and efficiency.
-          </p>
-      </div>
+
     </div>
 </section>
 
   
-    <script src="../javascript/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
 
-<!--<div class="projects">
-    <a href="https://github.com/dumdum9000" class="project-link typing-effect">Github</a>
-    <a href="/menu/menu.html" class="project-link typing-effect">Menu Project</a>
-    <a href="about.html" class="project-link typing-effect">Minecraft Project</a>
-</div>
--->
