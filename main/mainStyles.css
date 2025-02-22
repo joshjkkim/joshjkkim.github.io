@@ -619,8 +619,4 @@ h1.typing-effect {
   .hamburger {
       display: flex;
   }
-
-  .separator {
-    background-attachment: scroll;
-  }
 }
