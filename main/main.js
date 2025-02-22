@@ -131,15 +131,4 @@ function toggleMenu() {
     }
 }
 
-window.addEventListener("scroll", () => {
-    const parallaxElements = document.querySelectorAll(".separator.parallax");
-    const scrollPos = window.pageYOffset;
-    
-    parallaxElements.forEach(el => {
-      const speed = parseFloat(el.getAttribute("data-parallax-speed")) || 0.5;
-      const yPos = scrollPos * speed;
-
-      el.style.backgroundPosition = `center ${yPos}px`;
-    });
-  });
   

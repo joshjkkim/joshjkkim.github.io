@@ -34,7 +34,7 @@ body.theme-transition {
   background-position: center;
   position: relative;
   overflow: hidden;
-  background-attachment: scroll;
+  background-attachment: fixed;
   transition: background-image 1s ease-in-out, opacity 0.6s ease-in-out;
 }
 
@@ -618,5 +618,9 @@ h1.typing-effect {
 
   .hamburger {
       display: flex;
+  }
+
+  .separator {
+    background-attachment: scroll;
   }
 }
