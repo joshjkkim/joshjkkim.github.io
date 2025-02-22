@@ -75,7 +75,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    const body = document.body;
+    const flashlightContainer = document.getElementById("flashlight-container");
+
+    // Toggle night mode when the flashlight container is clicked
+    flashlightContainer.addEventListener("click", (e) => {
+    // Prevent propagation
+    e.stopPropagation();
+
+    // Toggle dark mode and save theme
+    body.classList.toggle("dark-mode");
+    if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+    
+    // Create ripple element
+    const ripple = document.createElement("div");
+    ripple.classList.add("ripple");
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+    
+    // Remove the ripple after its animation completes
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
 });
+});
+
+document.addEventListener("scroll", () => {
+    const progress = document.getElementById("scroll-progress");
+    const scrollTop = window.scrollY; // current scroll position
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / scrollHeight) * 100;
+    progress.style.width = scrollPercentage + "%";
+  });
 
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
@@ -93,3 +130,4 @@ function toggleMenu() {
         });
     }
 }
+

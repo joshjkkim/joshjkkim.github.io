@@ -40,33 +40,46 @@
         <div></div>
         <div></div>
     </div>
-</nav>
-    <section class="first" id="home">
-        <div class="container">
-          <div class="content">
-            <div class="text-content">
+    <div id="scroll-progress">
+      <div id="progress-icon" alt="Pixel Art Icon"></div>
+    </div>
+  </nav>
+
+<section class="first" id="home">
+  <div class="container">
+      <div class="content">
+          <!-- Left Side: Text and Socials -->
+          <div class="text-content">
               <h1 class="typing-effect">Hi, I'm <span class="underline">Joshua Kim</span></h1>
               <div class="social-icons">
-                <a href="https://github.com/dumdum9000" target="_blank" class="social-icon" aria-label="GitHub">
-                  <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com/in/joshuakim28" target="_blank" class="social-icon" aria-label="LinkedIn">
-                  <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://leetcode.com/jjkk28" target="_blank" class="social-icon" aria-label="LeetCode">
-                  <i class="fa-solid fa-code"></i>
-                </a>
+                  <a href="https://github.com/dumdum9000" target="_blank" class="social-icon" aria-label="GitHub">
+                      <i class="fab fa-github"></i>
+                  </a>
+                  <a href="https://linkedin.com/in/joshuakim28" target="_blank" class="social-icon" aria-label="LinkedIn">
+                      <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a href="https://leetcode.com/jjkk28" target="_blank" class="social-icon" aria-label="LeetCode">
+                      <i class="fa-solid fa-code"></i>
+                  </a>
               </div>
-            </div>
-            <div class="image-content">
-              <img src="../photos/headshot.jpg" alt="Your Headshot" id="headshot" />
-            </div>
           </div>
-        </div>
-      </section>
+
+          <div class="image-content">
+              <img src="../photos/headshot.jpg" alt="Your Headshot" id="headshot" />
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Flashlight System (Placing it outside content for free movement) -->
+<div id="flashlight-container">
+  <img id="pixel-flashlight" src="../photos/flashlight.png" alt="Pixel Flashlight">
+</div>
+
       <div class="separator separator-1"></div>
     <section class="about" id="about">
         <div class="container">
+          <div class="gradient-overlay"></div>
           <div class="content">
             <div class="text-content" style="font-size: clamp(1rem, 3vw, 1.8rem);">
                 <h2 class="typing-effect underline fade-in"><u>About Me</u></h2>
@@ -126,38 +139,37 @@
   </div>
   <div class="container" style="padding: 2rem;">
     <div class="text-content">
-        <p class="fade-in skill-box" style="font-size: clamp(1rem, 3vw, 1.2rem); width: auto;"> 
-          <span class="underline">Tech Consultant/Social Director</span> <br>
-          <strong style="font-size: clamp(0.8rem, 3vw, 1rem)">Innovation for Impact</strong> <br>
-          <span style="font-size: clamp(0.6rem, 3vw, 0.8rem)";>
-            Spearheaded social events as the sole Freshman on the executive board, organizing club-wide events, proposing initiatives, and providing input on admissions and core operations to enhance member engagement and overall club success.
-            Optimized the MongoDB Atlas database and continued to integrate Cloudinary for optimized media storage, improving the management of user-uploaded content and streamlining performance.
-            Built API endpoints using Node.js and Express.js for further data exchange and implemented Multer for batch file uploads, resulting in an optimized backend performance, and improved user experience.
-          </span>
-        </p>
+      <p class="fade-in skill-box" style="font-size: clamp(1rem, 3vw, 1.2rem); width: auto;"> 
+        <span class="underline">Tech Consultant/Social Director</span> <br>
+        <strong style="font-size: clamp(0.8rem, 3vw, 1rem)">Innovation for Impact</strong> <br>
+        <span style="font-size: clamp(0.6rem, 3vw, 0.8rem);">
+          Led social events as the only freshman on the exec board. Enhanced user experience by optimizing MongoDB & integrating Cloudinary for media storage. Built API endpoints with Node.js & Express.js, improving backend performance.
+        </span>
+      </p>
     </div>
+
     <div class="text-content">
       <p class="fade-in skill-box" style="font-size: clamp(1rem, 3vw, 1.2rem); width: auto;"> 
         <span class="underline">Honors Admissions Ambassador</span> <br>
         <strong style="font-size: clamp(0.8rem, 3vw, 1rem)">LSA Honors Program</strong> <br>
-          <span style="font-size: clamp(0.6rem, 3vw, 0.8rem)";>
-          Advised prospective students and families on the opportunities presented through the LSA Honors program. Currently scheduled Zoom meetings but accepted sessions for personal tours and meetings throughout the spring semester.
-          Assigned to announce  my experiences as the only freshman ambassador on Campus Days throughout the spring semester to demonstrate the benefits of joining the program to crowds of over 200+ members in attendance.
-          </span>
+        <span style="font-size: clamp(0.6rem, 3vw, 0.8rem);">
+          Guided prospective students through program opportunities via tours and Zoom meetings. Delivered presentations on Campus Days to 200+ attendees, sharing personal experiences as the only freshman ambassador.
+        </span>
       </p>
     </div>
+
     <div class="text-content">
       <p class="fade-in skill-box" style="font-size: clamp(1rem, 3vw, 1.2rem); width: auto;"> 
         <span class="underline">Data Analyst Intern</span> <br>
         <strong style="font-size: clamp(0.8rem, 3vw, 1rem)">OCAPICA</strong> <br>
-          <span style="font-size: clamp(0.6rem, 3vw, 0.8rem)";>
-            Contributed as the only non-graduate student in a UCI research program focused on mental healthcare access for AANHPI youth, analyzing data under CEO Mary Anne Foo’s direct mentorship, shaping the research direction and contributing to a published paper on critical mental health barriers.
-            Analyzed 400+ clients’ CANS scores, trauma history, and other mental health data utilizing Excel and Tableau, formulating research questions that shaped the study and highlighted health disparities in the AANHPI youth community.            
-          </span>
+        <span style="font-size: clamp(0.6rem, 3vw, 0.8rem);">
+          Analyzed 400+ client records to identify mental health disparities in AANHPI youth. Contributed to a UCI research study, shaping findings under CEO mentorship. Utilized Excel & Tableau to extract key insights.
+        </span>
       </p>
     </div>
   </div>
 </section>
+
 
 <div class="separator separator-4"></div>
 

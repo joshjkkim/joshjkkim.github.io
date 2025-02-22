@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Lexend');
 
+/* Global Styling */
 * {
   font-family: 'Lexend', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all .2s linear;
   text-decoration: none;
+  transition: background-color 0.5s ease, color 0.5s ease, text-shadow 0.5s ease;
 }
 
 /* Body and Section Styling */
@@ -15,126 +16,173 @@ html, body {
   scroll-behavior: smooth;
 }
 
+body {
+  transition: background 0.8s ease-in-out;
+}
+
+/* Smooth Theme Switch Effect */
+body.theme-transition {
+  transition: background 0.8s ease-in-out, filter 0.8s ease-in-out;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* Separator Image Transition */
+.separator {
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  background-attachment: fixed;
+  transition: background-image 1s ease-in-out, opacity 0.6s ease-in-out;
+}
+
+/* Sections */
 section {
   min-height: 100vh;
   padding: 1rem;
   width: 100%;
   overflow-x: hidden;
-  display: flex; /* Enables Flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  flex-direction: column; /* Optional: stack content vertically */
-  text-align: center; /* Center text inside the section */
-  position: relative; /* To allow pseudo-element positioning */
-}
-
-/* First Section */
-/* First Section */
-.first {
-  z-index: 1;
-  margin: 0;
-  opacity: 0; /* Initial opacity for fade-in effect */
-  transform: scale(0.9); /* Start slightly scaled down */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
-  background: linear-gradient(180deg, #caeaf5, #aab3ee); /* Lighter slate gray to soft sky blue */
-  background-size: 100% 200%; /* Ensuring gradient movement */
-  background-position: 50% 0%;
-  animation: gradientAnimationVertical 6s ease-in-out infinite; /* Smooth gradient animation */
-  padding: 60px 0;
-}
-
-/* About Section */
-.about {
-  background: linear-gradient(180deg, #aab3ee, #a5dfd8); /* Muted slate to soft sage green */
-  background-size: 100% 200%; /* Ensuring gradient movement */
-  background-position: 50% 0%;
-  animation: gradientAnimationVertical 6s ease-in-out infinite;
-  padding: 60px 0;
-}
-
-/* Technologies Section */
-.technologies {
-  background: linear-gradient(180deg, #a5dfd8, #c8e2a6); /* Sage green to soft gray-green */
-  background-size: 100% 200%; /* Ensuring gradient movement */
-  background-position: 50% 0%;
-  animation: gradientAnimationVertical 6s ease-in-out infinite;
-  padding: 60px 0;
-}
-
-/* Projects Section */
-.projects {
-  background: linear-gradient(180deg, #f6f6b9, #f6c9b9); /* Gray-green to very light gray */
-  background-size: 100% 200%; /* Ensuring gradient movement */
-  background-position: 50% 0%;
-  animation: gradientAnimationVertical 6s ease-in-out infinite;
-  padding: 60px 0;
-}
-
-.experience {
-  background: linear-gradient(180deg, #c8e2a6, #f6f6b9); /* Gray-green to very light gray */
-  background-size: 100% 200%; /* Ensuring gradient movement */
-  background-position: 50% 0%;
-  animation: gradientAnimationVertical 6s ease-in-out infinite;
-  padding: 60px 0;
-}
-
-
-
-.separator {
-  width: 100%;
-  height: 100px; /* Adjust the height */
-  background-size: cover;
-  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
   position: relative;
-  overflow: hidden; /* Hide anything outside of the separator */
-  background-attachment: fixed; /* Parallax effect */
-  transition: background-position 0.3s ease-in-out;
+  transition: background 0.8s ease-in-out;
 }
 
-.separator-1 {
-  background-image: url('../menu/bursley.jpg');
+/* Section-Specific Backgrounds */
+:root {
+  /* Adjusted pastel gradients with a touch of white */
+  --bg-gradient-first: linear-gradient(180deg, #edf3f8, #d5deee);
+  --bg-gradient-about: linear-gradient(180deg, #dbe3f0, #d9ece9);
+  --bg-gradient-technologies: linear-gradient(180deg, #daece9, #e3e8df);
+  --bg-gradient-projects: linear-gradient(180deg, #f9f9ef, #f5e8e8);
+  --bg-gradient-experience: linear-gradient(180deg, #e9ede5, #f5f5e8);
+  --bg-gradient-progress: linear-gradient(180deg, #392686, #5988c1);
+  --bg-gradient-navbar: linear-gradient(180deg, #392686, #5988c1);
+
+  --bg-image-progress: url('../photos/vaporeon.gif');
+  
+  --text-glow: rgba(40, 40, 40, 0.85);
+  --text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  
+  --separator-1: url('../menu/bursley.jpg');
+  --separator-2: url('../menu/eastquad.jpg');
+  --separator-3: url('../menu/northquad.jpg');
+  --separator-4: url('../menu/mosherjordan.jpg');
 }
 
-.separator-2 {
-  background-image: url('../menu/eastquad.jpg');
+/* Dark Mode */
+.dark-mode {
+  --bg-gradient-first: linear-gradient(180deg, #121212, #1a1a1a);
+  --bg-gradient-about: linear-gradient(180deg, #1a1a1a, #2b2b2b);
+  --bg-gradient-technologies: linear-gradient(180deg, #2b2b2b, #3c3c3c);
+  --bg-gradient-projects: linear-gradient(180deg, #3c3c3c, #4d4d4d);
+  --bg-gradient-experience: linear-gradient(180deg, #4d4d4d, #5e5e5e);
+  --bg-gradient-progress: linear-gradient(180deg, #e3e37d, #fbffd1);
+  --bg-gradient-navbar: linear-gradient(180deg, #e3e37d, #fbffd1);
+  
+  --bg-image-progress: url('../photos/pikachu.gif');
+
+  --text-glow: rgba(255, 217, 0, 0.9);
+  --text-shadow: 0px 0px 15px rgba(255, 217, 0, 0.6), 0px 0px 30px rgba(255, 217, 0, 0.4);
+
+  --separator-1: url('../photos/neoncity.gif');
+  --separator-2: url('../photos/bmw.gif');
+  --separator-3: url('../photos/lovers.gif');
+  --separator-4: url('../photos/nighttime.gif');
 }
 
-.separator-3 {
-  background-image: url('../menu/northquad.jpg');
+/* Apply Dynamic Theme Variables */
+.first { background: var(--bg-gradient-first);}
+.about { background: var(--bg-gradient-about); }
+.technologies { background: var(--bg-gradient-technologies); }
+.projects { background: var(--bg-gradient-projects); }
+.experience { background: var(--bg-gradient-experience); }
+
+.separator-1 { background-image: var(--separator-1); }
+.separator-2 { background-image: var(--separator-2); }
+.separator-3 { background-image: var(--separator-3); }
+.separator-4 { background-image: var(--separator-4); }
+
+.text-content {
+  color: var(--text-glow);
+  text-shadow: var(--text-shadow);
+  transition: color 0.5s ease, text-shadow 0.8s ease-in-out;
 }
 
-.separator-4 {
-  background-image: url('../menu/mosherjordan.jpg');
+/* Flashlight Container */
+#flashlight-container {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1000;
+  animation: bobbing 1s infinite alternate ease-in-out;
 }
 
+/* Flashlight Image */
+#pixel-flashlight {
+  width: 80px;
+  height: auto;
+  position: fixed;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  pointer-events: auto;  /* ✅ Allow clicking */
+  z-index: 1001;
+  transition: transform 0.1s ease-in-out;
+  filter: drop-shadow(0 0 30px rgb(244, 255, 164));
+  transition: filter 0.3s ease;
+}
+
+body.dark-mode #pixel-flashlight {
+  filter: drop-shadow(0 0 10px rgb(26, 26, 26));
+  transition: filter 0.3s ease;
+}
+
+/* Bobbing Animation */
+@keyframes bobbing {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.ripple {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1100;
+  animation: rippleEffect 0.6s ease-out;
+}
+
+@keyframes rippleEffect {
+  from {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+  }
+  to {
+      transform: translate(-50%, -50%) scale(10);
+      opacity: 0;
+  }
+}
+
+/* Animated Gradient Effect */
 @keyframes gradientAnimationVertical {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 0% 0%; }
 }
 
-@keyframes gradientAnimationHorizontal {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Flexbox container for the content */
+/* Containers & Content */
 .container {
   display: flex;
-  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
@@ -143,19 +191,16 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Adds spacing between the two sections (text and image) */
+  gap: 20px;
   width: 100%;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .text-content {
   flex: 1;
-  text-align: left; /* This keeps the heading aligned to the left */
-  color: #333333;
-  opacity: 0.9; /* Slight opacity to text for better readability */
-  font-size: 1.8rem; /* Use rem units for scalability */
-  line-height: 1.5; /* Increase line height for better readability */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 1.5;
 }
 
 h1 {
@@ -201,12 +246,12 @@ h1.typing-effect {
 
 .social-icon {
   font-size: clamp(2rem, 3vw, 2.5rem);
-  color: #000000;
+  color: white;
   transition: color 0.3s scale 1s ease;
 }
 
 .social-icon:hover {
-  color: #0072b1; /* LinkedIn hover effect */
+  color: yellow; /* LinkedIn hover effect */
   transform: scale(1.1);
 }
 
@@ -431,12 +476,12 @@ h1.typing-effect {
   left: 0;
   width: 100%;
   z-index: 1000; /* Ensures it stays above other content */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4)
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .navbar a {
   text-decoration: none;
-  background: linear-gradient(0deg, #355a59, #253d2a);
+  background: var(--bg-gradient-navbar);
   -webkit-background-clip: text;
   color: transparent;
   animation: gradientAnimationVertical 4s ease-in-out infinite;
@@ -488,6 +533,30 @@ h1.typing-effect {
 .content {
   margin-top: 70px; /* Same as navbar height to avoid overlap */
   padding: 1rem;
+}
+
+#scroll-progress {
+  position: absolute;
+  bottom: 0; /* Places it at the bottom of the navbar */
+  left: 0;
+  height: 4px; /* Adjust height as needed */
+  width: 0%;
+  background: var(--bg-gradient-progress); /* Ensure this variable is defined */
+  z-index: 1100; /* Sits above the navbar content */
+  transition: width 0.2s ease-out;
+}
+
+#progress-icon {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  transform: translate(50%, 50%) scale(2); /* Scale up by 2x */
+  height: 2.5rem;
+  width: 2.5rem;
+  background-image: var(--bg-image-progress);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Responsive Design */
