@@ -551,8 +551,8 @@ h1.typing-effect {
   right: 0;
   bottom: 100%;
   transform: translate(50%, 50%) scale(2); /* Scale up by 2x */
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
   background-image: var(--bg-image-progress);
   background-size: contain;
   background-repeat: no-repeat;
