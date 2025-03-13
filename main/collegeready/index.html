@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Kim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="/main/mainProjects.css"> 
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo">
+          <img src="/photos/catlogo.jpeg" alt="Joshua Kim Logo" class="logo-image" onclick="location.href='/main/#home'">
+        </div>
+        <div class="nav-links">
+            <a href="/main/#home">Home</a>
+            <a href="/main/#about">About</a>
+            <a href="/main/#skills">Skills</a>
+            <a href="/main/#experience">Experience</a>
+            <a href="/main/#projects">Projects</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <button class="goto-button" onclick="location.href='https://collegeready.me'">Click Here To Go To the Website!</button>
+
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Skills Used</h3>
+        <div class="skill-box-group">
+            <p class="fade-in skill-box">Docker <i class="fab fa-docker"></i></p>
+            <p class="fade-in skill-box">NGINX <i class="fas fa-server"></i></p>
+            <p class="fade-in skill-box">AWS EC2 <i class="fas fa-cloud"></i></p>
+            <p class="fade-in skill-box">Javascript <i class="fab fa-js"></i></p>
+            <p class="fade-in skill-box">Firebase <i class="devicon-firebase-plain"></i></p>
+        </div>
+        <div class="skill-box-group">
+            <p class="fade-in skill-box">React <i class="fab fa-react"></i></p>
+            <p class="fade-in skill-box">Node <i class="fab fa-node"></i></p>
+            <p class="fade-in skill-box">Express.js <i class="fa-brands fa-node-js"></i></p>
+            <p class="fade-in skill-box">CORS <i class="fas fa-shield-alt"></i></p>
+            <p class="fade-in skill-box">Puppeteer <i class="fas fa-robot"></i></p>
+            <p class="fade-in skill-box">Axios <i class="devicon-axios-plain"></i></p>
+            <p class="fade-in skill-box">MongoDB <i class="devicon-mongodb-plain"></i></p>
+        </div>
+        
+        <h3 class="section-title" style="font-size: clamp(1rem, 5vw, 3rem);">Description</h3>
+        <div class="text-content">
+            <p>
+                When I was applying to colleges it was actually horrible of a process in terms of organizing <br>
+                keeping track of dates and what not. <br>
+                So I ended up making a webscraping bot that would fetch all sorts of demographics, deadlines, admissions information and requirements <br>
+                for thousands of colleges. Then I was able to make accounts with firebase that was able to add these colleges to your profile and make a custom curated <br>
+                checklist for that specific college with the ability to customize and add/delete entries of course <br>
+                That kind of spiraled into a bunch of other features like college comparison, major stats, essay topics/ideas, extracurricular inspirations, calendars and deadlines etc <br>
+                MongoDB for their NoSQL style database which was very helpful for me and the types of data I was storing <br>
+                
+            </p>
+        </div>
+    </div>
+  
+</body>
+</html>
