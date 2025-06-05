@@ -12,7 +12,7 @@
 /* Body and Background Styling */
 html, body {
   overflow-x: hidden;
-  background: linear-gradient(to bottom, #eeeeee, #8ddbff 50%, #ffd4c0);
+  background: linear-gradient(to bottom, #ffffff, #daf4ff 50%, #ffe8dc);
   background-size: 100% 200%;
   background-position: 50% 0%;
   animation: gradientAnimationVertical 6s ease-in-out infinite;
