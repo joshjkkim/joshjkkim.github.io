@@ -22,6 +22,17 @@ async function fetchMenuData() {
     try {
         let response;
 
+        if(diningHall == "example") {
+            response = await fetch(`https://kimjoshua.com/menu/example.json`);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            menuItems = await response.json();
+            displayMenu(menuItems);
+            isRandomMenuDisplayed = false; 
+        }
+
         response = await fetch(`https://dumdum.work/menu?diningHall=${diningHall}&${queryString}`);
 
         if (!response.ok) {
