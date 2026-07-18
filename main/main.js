@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Restore saved theme before anything renders
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
     const sections = document.querySelectorAll('section:not(#first)'); // Select all sections except the first one
 
     // Apply typing effect to elements in the first section on load
@@ -58,20 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Owl Carousel after DOM is fully loaded
     $(".owl-carousel").owlCarousel({
-        items: 1,           // Show 1 item by default (even for larger screens)
+        items: 1,
         loop: true,
-        margin: 10,        
+        margin: 24,
         autoplay: true,
-        autoplayTimeout: 5000,  // Set autoplay timeout
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
         responsive: {
             0: {
-                items: 1      // 1 item on mobile screens
-            },
-            600: {
-                items: 1      // 1 item on medium screens
+                items: 1      // 1 card on mobile screens
             },
             1000: {
-                items: 1      // 1 item on larger screens
+                items: 2      // 2 cards side by side on larger screens
             }
         }
     });
