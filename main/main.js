@@ -81,6 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const body = document.body;
     const flashlightContainer = document.getElementById("flashlight-container");
+    const flashlightLabel = document.getElementById("flashlight-label");
+
+    // Label always advertises where the toggle takes you next
+    function syncFlashlightLabel() {
+        const isDark = body.classList.contains("dark-mode");
+        flashlightLabel.textContent = isDark ? "day mode" : "night mode";
+        flashlightContainer.setAttribute(
+            "aria-label",
+            isDark ? "Switch to day mode" : "Switch to night mode"
+        );
+    }
+    syncFlashlightLabel();
 
     // Toggle night mode when the flashlight container is clicked
     flashlightContainer.addEventListener("click", (e) => {
@@ -94,7 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         localStorage.setItem("theme", "light");
     }
-    
+    syncFlashlightLabel();
+
     // Create ripple element
     const ripple = document.createElement("div");
     ripple.classList.add("ripple");

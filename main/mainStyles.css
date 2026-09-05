@@ -143,33 +143,57 @@ body.dark-mode {
   transition: color 0.5s ease, text-shadow 0.8s ease-in-out;
 }
 
-/* Flashlight Container */
+/* Flashlight = theme toggle. Pinned bottom-right so it is reachable from
+   every section, and labelled so people know what it does. */
 #flashlight-container {
-  position: relative;
-  text-align: center;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
   cursor: pointer;
   z-index: 1000;
-  animation: bobbing 1s infinite alternate ease-in-out;
+  animation: bobbing 1.4s infinite alternate ease-in-out;
 }
 
 /* Flashlight Image */
 #pixel-flashlight {
-  width: 80px;
+  width: 64px;
   height: auto;
-  position: fixed;
-  left: 50%;
-  bottom: 50px;
-  transform: translateX(-50%);
-  pointer-events: auto;
-  z-index: 1001;
-  transition: transform 0.1s ease-in-out;
-  filter: drop-shadow(0 0 30px rgb(244, 255, 164));
+  image-rendering: pixelated;
+  pointer-events: none;
+  filter: drop-shadow(0 0 22px rgba(244, 255, 164, 0.9));
   transition: filter 0.3s ease;
 }
 
+#flashlight-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  color: var(--text-muted);
+  text-shadow: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+#flashlight-container:hover #pixel-flashlight,
+#flashlight-container:focus-visible #pixel-flashlight {
+  filter: drop-shadow(0 0 34px rgba(255, 240, 140, 1));
+}
+
+#flashlight-container:hover #flashlight-label,
+#flashlight-container:focus-visible #flashlight-label {
+  color: var(--heading);
+}
+
 body.dark-mode #pixel-flashlight {
-  filter: drop-shadow(0 0 10px rgb(26, 26, 26));
-  transition: filter 0.3s ease;
+  filter: drop-shadow(0 0 26px rgba(255, 203, 5, 0.75));
 }
 
 /* Bobbing Animation */
@@ -321,6 +345,55 @@ h2.typing-effect {
 .accent-underline {
   border-bottom: 3px solid var(--maize);
   font-weight: 600;
+}
+
+/* Hero call-to-actions — the two things a visitor actually came for */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  font-size: clamp(0.95rem, 1.7vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--maize);
+  color: #00274c;
+  box-shadow: 0 6px 18px rgba(255, 203, 5, 0.35);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(255, 203, 5, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--heading);
+  border-color: var(--heading);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+  background: var(--heading);
+  color: var(--card-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 39, 76, 0.22);
 }
 
 .social-icons {
@@ -581,9 +654,22 @@ h2.typing-effect {
     justify-content: center;
   }
 
+  .hero-actions {
+    justify-content: center;
+  }
+
   .hero-tagline {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  #flashlight-container {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  #pixel-flashlight {
+    width: 48px;
   }
 
   #headshot {

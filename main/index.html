@@ -11,6 +11,9 @@
     <meta property="og:url" content="https://kimjoshua.com/main/">
 
     <link rel="icon" type="image/jpeg" href="/photos/catlogo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -48,6 +51,14 @@
               <h1 class="typing-effect">Hi, I'm Joshua Kim</h1>
               <p class="hero-subtitle">Data Science &amp; Economics <span class="accent">@</span> University of Michigan</p>
               <p class="hero-tagline">I build full-stack apps, developer tools, and the occasional Minecraft bot.</p>
+              <div class="hero-actions">
+                  <a class="btn btn-primary" href="/resume.pdf" target="_blank" rel="noopener">
+                      <i class="fa-solid fa-file-arrow-down"></i> Resume
+                  </a>
+                  <a class="btn btn-secondary" href="mailto:jjkk@umich.edu">
+                      <i class="fa-solid fa-envelope"></i> Email me
+                  </a>
+              </div>
               <div class="social-icons">
                   <a href="https://github.com/joshjkkim" target="_blank" class="social-icon" aria-label="GitHub">
                       <i class="fab fa-github"></i>
@@ -68,10 +79,11 @@
   </div>
 </section>
 
-<!-- Flashlight System (Placing it outside content for free movement) -->
-<div id="flashlight-container">
-  <img id="pixel-flashlight" src="../photos/flashlight.png" alt="Pixel Flashlight">
-</div>
+<!-- Flashlight System — this is the theme toggle, so it stays pinned and labelled -->
+<button id="flashlight-container" type="button" aria-label="Toggle night mode">
+  <img id="pixel-flashlight" src="/photos/flashlight.png" alt="">
+  <span id="flashlight-label">night mode</span>
+</button>
 
       <div class="separator separator-1 "></div>
 

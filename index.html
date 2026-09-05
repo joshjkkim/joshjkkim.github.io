@@ -3,73 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Josh's Site</title>
+    <title>Joshua Kim — Data Science &amp; Economics @ Michigan</title>
+    <meta name="description" content="Joshua Kim — Data Science &amp; Economics at the University of Michigan. Software developer intern at the Federal Reserve Bank of Cleveland, building Cernova and other full-stack projects.">
+    <link rel="canonical" href="https://kimjoshua.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Joshua Kim">
+    <meta property="og:description" content="Data Science &amp; Economics @ University of Michigan. Check out my projects and experience.">
+    <meta property="og:image" content="https://kimjoshua.com/photos/headshot.jpg">
+    <meta property="og:url" content="https://kimjoshua.com/">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/jpeg" href="/photos/catlogo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Width of the storefront; everything else keys off this. */
+            --store-w: clamp(300px, 62vmin, 760px);
+            /* The art is 556x449, so the box must match or the building floats. */
+            --store-h: calc(var(--store-w) * 449 / 556);
+            /* Height of the road strip, measured from the bottom of the viewport. */
+            --road-h: 20%;
+        }
+
+        /* Cars are spawned offscreen-right into the body, so the document has to
+           be clipped at the root or the whole scene gets pushed sideways. */
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             background-color: #011124;
             color: white;
             font-family: 'Press Start 2P', cursive;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            height: 100%;
             overflow: hidden;
             position: relative;
+            /* Sky warms up as clouds get cleared. */
+            transition: background-color 1.2s ease;
         }
 
         .store {
-            position: relative;
-            background: url('../photos/pixelartstorenight.png') no-repeat center center;
+            position: absolute;
+            left: 50%;
+            /* Sit the building's base on the road instead of centring it in the viewport. */
+            bottom: calc(var(--road-h) - var(--store-h) * 0.035);
+            width: var(--store-w);
+            height: var(--store-h);
+            margin-left: calc(var(--store-w) / -2);
+            background: url('/photos/pixelartstorenight.png') no-repeat center center;
             background-size: contain;
-            width: 50%; /* Width percentage based on parent */
-            padding-top: 50%;
-            max-width: 700px; /* Adjust to your desired maximum width */
-            max-height: 700px;
-            z-index: 3; 
+            image-rendering: pixelated;
+            z-index: 3;
         }
 
         .store:hover {
             animation: bounce 0.5s infinite alternate;
         }
 
-        .store:hover .door {
-            animation: pulse-color 1s infinite;
-        }
-
         @keyframes bounce {
             0% { transform: translateY(0); }
-            100% { transform: translateY(-8%); }
+            100% { transform: translateY(-2%); }
         }
 
-        .hotspot {
-            position: absolute;
-            cursor: pointer;
-            clip-path: polygon(0% 10%, 130% 20%, 150% 65%, 130% 70%, 0% 55%);
-            
-        }
-
+        /* The doorway. A real link so it is keyboard reachable and crawlable. */
         .door {
             position: absolute;
-            top: 58%;
+            top: 66%;
             left: 40%;
-            width: 8%;
-            padding-top: 40%;
-            background-color: transparent; 
-            border: 0px solid transparent; 
-            transition: border-color 0.3s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 10%;
+            height: 30%;
+            border-radius: 2px;
+            cursor: pointer;
+            /* Light spilling out of the doorway — this is the affordance. */
+            animation: doorGlow 2.4s ease-in-out infinite;
         }
 
-        @keyframes pulse-color {
-            0% { background-color: transparent; }
-            50% { background-color: rgba(255, 255, 0, 0.7); } 
-            100% { background-color: transparent; }
+        /* Enlarged hit area so the door is tappable on a phone. */
+        .door::after {
+            content: "";
+            position: absolute;
+            inset: -16px -20px;
         }
+
+        .door:focus-visible {
+            outline: 3px solid #ffd84d;
+            outline-offset: 4px;
+        }
+
+        @keyframes doorGlow {
+            0%, 100% { box-shadow: 0 0 14px 4px rgba(255, 214, 102, 0.30); background-color: rgba(255, 214, 102, 0.06); }
+            50%      { box-shadow: 0 0 26px 10px rgba(255, 214, 102, 0.60); background-color: rgba(255, 214, 102, 0.22); }
+        }
+
+        .store:hover .door,
+        .door:hover {
+            animation: doorGlowStrong 0.9s ease-in-out infinite;
+        }
+
+        @keyframes doorGlowStrong {
+            0%, 100% { box-shadow: 0 0 22px 8px rgba(255, 226, 130, 0.55); background-color: rgba(255, 226, 130, 0.25); }
+            50%      { box-shadow: 0 0 40px 16px rgba(255, 235, 160, 0.85); background-color: rgba(255, 235, 160, 0.55); }
+        }
+
+        /* "click the door" prompt, sitting on the sidewalk below the doorway. */
+        .enter-hint {
+            position: absolute;
+            left: 45%;
+            top: 100%;
+            transform: translateX(-50%);
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: clamp(9px, 1.6vmin, 13px);
+            line-height: 1.9;
+            letter-spacing: 0.05em;
+            color: #ffdf6b;
+            text-shadow: 2px 2px 0 #0b1a30, 0 0 14px rgba(255, 216, 77, 0.7);
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 6;
+        }
+
+        .enter-hint.show { opacity: 1; }
+
+        .enter-hint .arrow {
+            font-size: 1.6em;
+            animation: hintBob 1.1s ease-in-out infinite alternate;
+        }
+
+        /* Plate keeps the text readable over the pale sidewalk */
+        .enter-hint .label {
+            background: rgba(6, 16, 32, 0.75);
+            border: 1px solid rgba(255, 216, 77, 0.35);
+            border-radius: 3px;
+            padding: 0.6rem 0.85rem;
+        }
+
+        @keyframes hintBob {
+            0%   { transform: translateY(3px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        /* Escape hatch for anyone who does not want to play. */
+        .skip-intro {
+            position: fixed;
+            top: 1.4rem;
+            right: 1.6rem;
+            z-index: 20;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(7px, 1.2vmin, 10px);
+            letter-spacing: 0.06em;
+            color: rgba(214, 229, 255, 0.5);
+            text-decoration: none;
+            padding: 0.7rem 0.9rem;
+            border: 1px solid rgba(214, 229, 255, 0.22);
+            border-radius: 4px;
+            transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+        }
+
+        .skip-intro:hover,
+        .skip-intro:focus-visible {
+            color: #ffd84d;
+            border-color: rgba(255, 216, 77, 0.6);
+            background-color: rgba(255, 216, 77, 0.08);
+        }
+
+        /* Progress readout for the cloud easter egg. */
+        .cloud-counter {
+            position: fixed;
+            bottom: 1.4rem;
+            left: 1.6rem;
+            z-index: 20;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(7px, 1.2vmin, 10px);
+            letter-spacing: 0.06em;
+            color: rgba(214, 229, 255, 0.55);
+            text-shadow: 1px 1px 0 #0b1a30;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .cloud-counter.show { opacity: 1; }
+        .cloud-counter b { color: #ffd84d; font-weight: normal; }
 
         .clouds-container {
             position: absolute;
@@ -78,14 +202,15 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 3; 
+            z-index: 3;
             pointer-events: none;
         }
 
         .cloud {
             position: absolute;
-            background: url('../photos/cloud3.png') no-repeat;
+            background: url('/photos/cloud3.png') no-repeat;
             background-size: contain;
+            image-rendering: pixelated;
             opacity: 0.45;
             animation: moveCloud 30s linear infinite;
             transition: transform 3s ease, opacity 3s ease;
@@ -99,11 +224,11 @@
         @keyframes blowAway {
             0% {
                 opacity: 0.8;
-                transform: translate(0, 0); 
+                transform: translate(0, 0);
             }
             100% {
                 opacity: 0;
-                transform: translate(var(--offset-x), var(--offset-y)); 
+                transform: translate(var(--offset-x), var(--offset-y));
             }
         }
 
@@ -125,8 +250,9 @@
             position: fixed;
             top: 2%;
             display: none;
-            z-index: 4; 
-            animation: slideInFromTop 3s ease forwards, sway 3.5s ease-in-out infinite alternate; 
+            z-index: 4;
+            image-rendering: pixelated;
+            animation: slideInFromTop 3s ease forwards, sway 3.5s ease-in-out infinite alternate;
         }
 
         @keyframes scale {
@@ -139,21 +265,21 @@
         }
 
         .stars-container {
-            position: absolute; 
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 45%;
             overflow: hidden;
-            z-index: 0; 
+            z-index: 0;
             pointer-events: auto;
         }
 
         .star {
             position: absolute;
-            background: url('../photos/stargif1.gif') no-repeat;
+            background: url('/photos/stargif1.gif') no-repeat;
             background-size: contain;
-            width: 3%; 
+            width: 3%;
             height: 3%;
             opacity: 0.8;
             animation: twinkle 2s infinite, fadeOut 3s forwards;
@@ -181,15 +307,15 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 5; 
-            pointer-events: none; 
+            z-index: 5;
+            pointer-events: none;
         }
 
         .seagull {
             position: absolute;
-            background: url('../photos/seagull.gif') no-repeat;
+            background: url('/photos/seagull.gif') no-repeat;
             background-size: contain;
-            width: 10%; 
+            width: 10%;
             opacity: 1;
             animation: fly 10s linear infinite;
         }
@@ -200,25 +326,27 @@
         }
 
         #palmtree {
-            width: 48%; 
+            width: 48%;
             height: 68%;
             position: fixed;
             top: 41%;
             left: 62%;
             display: none;
-            z-index: 4; 
-            animation: slideInFromTop 3s ease forwards; 
+            z-index: 4;
+            image-rendering: pixelated;
+            animation: slideInFromTop 3s ease forwards;
         }
 
         #palmtree2 {
-            width: 48%; 
+            width: 48%;
             height: 68%;
             position: fixed;
             top: 40%;
             right: 62%;
             display: none;
-            z-index: 4; 
-            animation: slideInFromTop 3s ease forwards; 
+            z-index: 4;
+            image-rendering: pixelated;
+            animation: slideInFromTop 3s ease forwards;
         }
 
         @keyframes sway {
@@ -227,13 +355,13 @@
         }
 
         #waves {
-            width: 100%; 
+            width: 100%;
             height: 50%;
             position: fixed;
             top: 60%;
             display: none;
-            z-index: 5; 
-            animation: slideInFromTop 5s ease forwards; 
+            z-index: 5;
+            animation: slideInFromTop 5s ease forwards;
             pointer-events: none;
         }
 
@@ -249,17 +377,17 @@
 
         @keyframes drive {
             from {
-                transform: translateX(30vw); 
+                transform: translateX(30vw);
             }
             to {
-                transform: translateX(-120vw); 
+                transform: translateX(-120vw);
             }
         }
 
         .road {
             width: 100%;
-            height: 20%; /* Set explicit height */
-            background: url('../photos/pixelroad.jpg') repeat-x center; /* Horizontal repeat only */
+            height: var(--road-h);
+            background: url('/photos/pixelroad.jpg') repeat-x center; /* Horizontal repeat only */
             background-size: contain; /* Ensures proper vertical scaling */
             position: absolute;
             bottom: 0%;
@@ -270,7 +398,7 @@
         .city {
             width: 100%;
             height: 65%; /* Set explicit height */
-            background: url('../photos/city.png') repeat-x center; /* Horizontal repeat only */
+            background: url('/photos/city.png') repeat-x center; /* Horizontal repeat only */
             background-size: auto 100%; /* Ensures proper vertical scaling */
             opacity: 0.5;
             position: absolute;
@@ -279,28 +407,49 @@
             pointer-events: none;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .store:hover,
+            .door,
+            .store:hover .door,
+            .door:hover,
+            .enter-hint .arrow,
+            .cloud,
+            .star,
+            #sun {
+                animation: none !important;
+            }
 
+            .door { background-color: rgba(255, 214, 102, 0.28); box-shadow: 0 0 22px 8px rgba(255, 214, 102, 0.5); }
+        }
     </style>
 </head>
 <body>
-    <audio id="cloudsfx1" src="../audio/cloudsfx1.mp3"></audio>
-    <audio id="cloudsfx2" src="../audio/cloudsfx2.mp3"></audio>
-    <audio id="dolphinsfx1" src="../audio/dolphinsfx1.mp3"></audio>
-    <audio id="catsfx1" src="../audio/catsfx1.mp3"></audio>
-    <audio id="starHoverSound" src="../audio/starsfx.mp3"></audio>
-    <audio id="sunHoverSound" src="../audio/growingsfx.mp3"></audio>
+    <audio id="cloudsfx1" src="/audio/cloudsfx1.mp3"></audio>
+    <audio id="cloudsfx2" src="/audio/cloudsfx2.mp3"></audio>
+    <audio id="dolphinsfx1" src="/audio/dolphinsfx1.mp3"></audio>
+    <audio id="catsfx1" src="/audio/catsfx1.mp3"></audio>
+
+    <a class="skip-intro" href="/main/">skip intro &rarr;</a>
+
     <div class="store">
-        <div class="hotspot door" onclick="window.location.href='../main';"></div>        
+        <a class="door" href="/main/" aria-label="Enter the site"></a>
+        <div class="enter-hint" id="enter-hint" aria-hidden="true">
+            <span class="arrow">&#9650;</span>
+            <span class="label">click the door</span>
+        </div>
     </div>
-    <div class="road"></div> 
-    <div class="city"></div> 
-    <div class="clouds-container"></div> 
+
+    <div class="cloud-counter" id="cloud-counter">clouds cleared <b><span id="cloud-count">0</span>/30</b></div>
+
+    <div class="road"></div>
+    <div class="city"></div>
+    <div class="clouds-container"></div>
     <div class="stars-container"></div>
     <div class="seagulls-container"></div>
-    <img id="palmtree" src="../photos/palmtree.gif" style="display: none;" alt="Palm Tree">
-    <img id="palmtree2" src="../photos/palmtreeReversed.gif" style="display: none;" alt="Palm Tree 2">
-    <img id="waves" src="../photos/waves.gif" style="display: none;" alt="Waves">
-    <img id="sun" src="../photos/pixelartsun.gif" style="display: none;" alt="Shining Sun">    
+    <img id="palmtree" src="/photos/palmtree.gif" style="display: none;" alt="Palm Tree">
+    <img id="palmtree2" src="/photos/palmtreeReversed.gif" style="display: none;" alt="Palm Tree 2">
+    <img id="waves" src="/photos/waves.gif" style="display: none;" alt="Waves">
+    <img id="sun" src="/photos/pixelartsun.gif" style="display: none;" alt="Shining Sun">
     <script src="home.js"></script>
 </body>
 </html>

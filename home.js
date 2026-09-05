@@ -14,24 +14,26 @@ function playSound(effect) {
     }
 }
 
-function createStar() {
-    const star = document.createElement('img');
-    star.src = '../photos/star.gif'; 
-    star.style.position = 'absolute';
-    star.style.width = '15%'; 
-    star.style.height = '15%'; 
-    star.style.opacity = Math.random(); 
-    star.style.left = `${Math.random() * 100}vw`; 
-    star.style.top = `${Math.random() * 100}vh`; 
-    star.style.zIndex = `2`;
-    document.body.appendChild(star);
-    
-    setTimeout(() => {
-        star.remove();
-    }, 2000); 
+// Sky colours the night walks through as the clouds get cleared, so progress
+// is visible before the sun actually shows up.
+const NIGHT_SKY = [1, 17, 36];
+const DAWN_SKY = [24, 64, 110];
+
+function lerpSky(progress) {
+    const channels = NIGHT_SKY.map((from, i) =>
+        Math.round(from + (DAWN_SKY[i] - from) * progress)
+    );
+    document.body.style.backgroundColor = `rgb(${channels.join(', ')})`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Nobody knows the door is clickable unless we say so.
+    const enterHint = document.getElementById('enter-hint');
+    setTimeout(() => enterHint && enterHint.classList.add('show'), 1800);
+
+    const cloudCounter = document.getElementById('cloud-counter');
+    const cloudCountText = document.getElementById('cloud-count');
+
     const starContainer = document.querySelector('.stars-container');
     let starsCreated = 0; 
     let stopStarCreation = false; 
@@ -120,9 +122,11 @@ document.addEventListener("DOMContentLoaded", () => {
             star.style.animation = 'fadeOut 5s forwards'; 
             setTimeout(() => star.remove(), 5000); 
         });
+            if (cloudCounter) cloudCounter.classList.remove('show');
+
             const store = document.querySelector('.store');
-            store.style.backgroundImage = 'url("../photos/pixelartstore.png")';
-            
+            store.style.backgroundImage = 'url("/photos/pixelartstore.png")';
+
             const sun = document.getElementById('sun');
             sun.style.display = 'block'; 
 
@@ -203,11 +207,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setTimeout(() => {
                     cloud.remove();
-                    clickedClouds++; 
-                    if (clickedClouds === numberOfClouds) {
-                        showSun(); 
+                    clickedClouds++;
+
+                    if (cloudCounter) {
+                        cloudCounter.classList.add('show');
+                        cloudCountText.textContent = clickedClouds;
                     }
-                }, 1500); 
+
+                    if (clickedClouds === numberOfClouds) {
+                        showSun();
+                    } else {
+                        lerpSky(clickedClouds / numberOfClouds);
+                    }
+                }, 1500);
             }
         });
     });
@@ -215,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function createCoconut(palmtree) {
     const coconut = document.createElement('img');
-    coconut.src = '../photos/coconut.png';
+    coconut.src = '/photos/coconut.png';
     coconut.style.position = 'absolute';
     coconut.style.width = `${Math.random() * 15}%`;
     coconut.style.height = coconut.style.height;
@@ -249,7 +261,7 @@ palmTrees.forEach(palmtree => {
 
 const carSize = 200; 
 let carsStopSpawning = false;
-const carImages = ['../photos/car1.gif', '../photos/car3.gif'];
+const carImages = ['/photos/car1.gif', '/photos/car3.gif'];
 const road = document.querySelector('.road');
 
 function spawnCar() {
