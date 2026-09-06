@@ -23,6 +23,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </head>
 <body>
+  <!-- Living sky behind the whole page — the same one the landing page opens on -->
+  <div id="sky" aria-hidden="true">
+    <!-- two depths, moving at different rates as you scroll -->
+    <div class="sky-layer sky-far">
+      <div class="milky-way"></div>
+      <div class="sky-stars"></div>
+    </div>
+    <div class="sky-layer sky-near">
+      <span class="shooting-star"></span>
+      <span class="sky-bird"></span>
+      <div class="sky-cirrus">
+        <span class="wisp w1"></span>
+        <span class="wisp w2"></span>
+        <span class="wisp w3"></span>
+        <span class="wisp w4"></span>
+        <span class="wisp w5"></span>
+        <span class="wisp w6"></span>
+        <span class="wisp w7"></span>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar">
     <div class="logo">
       <img src="/photos/catlogo.jpeg" alt="Joshua Kim Logo" class="logo-image" onclick="location.href='/main/#home'">
@@ -92,6 +114,7 @@
           <div class="gradient-overlay"></div>
           <div class="content">
             <div class="text-content" style="font-size: clamp(1rem, 3vw, 1.8rem);">
+                <span class="eyebrow"><i>&#9656;</i> 01 / ABOUT</span>
                 <h2 class="typing-effect fade-in">About Me</h2>
                 <p class="fade-in about-fact"><i class="fas fa-graduation-cap"></i> University of Michigan: 2024-2028</p>
                 <p class="fade-in about-fact"><i class="fas fa-chart-line"></i> Data Science and Economics Major</p>
@@ -109,6 +132,7 @@
 
     <section class="technologies" id="skills">
       <div class="section-heading">
+        <span class="eyebrow"><i>&#9656;</i> 02 / SKILLS</span>
         <h2 class="typing-effect">Relevant Skills</h2>
         <p class="fade-in section-lede"><i class="fa-regular fa-lightbulb"></i> I'm constantly learning and trying new technologies — here are some I've used in my recent work</p>
       </div>
@@ -151,6 +175,7 @@
 
 <section class="experience" id="experience">
   <div class="section-heading">
+    <span class="eyebrow"><i>&#9656;</i> 03 / EXPERIENCE</span>
     <h2 class="typing-effect">Experience</h2>
   </div>
   <div class="exp-grid">
@@ -189,6 +214,7 @@
 
   <section class="projects" id="projects" style="align-items: center;">
     <div class="section-heading">
+        <span class="eyebrow"><i>&#9656;</i> 04 / PROJECTS</span>
         <h2 class="typing-effect">Projects</h2>
         <p class="fade-in section-lede"><i class="fa-regular fa-lightbulb"></i> Over my time programming, I have made some cool creations — <strong>click</strong> each project to check it out!</p>
     </div>
@@ -267,6 +293,26 @@
     </div>
 </section>
 
+
+<footer class="site-footer">
+  <!-- Same street the site opened on — a car drives across to bookend the visit -->
+  <div class="footer-road" aria-hidden="true">
+    <img class="footer-car" src="/photos/car3.gif" alt="">
+  </div>
+  <div class="footer-inner">
+    <p class="footer-name">Joshua Kim</p>
+    <p class="footer-tag">Data Science &amp; Economics <span class="accent">@</span> Michigan</p>
+    <div class="footer-links">
+      <a href="mailto:jjkk@umich.edu">Email</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="https://github.com/joshjkkim" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/joshuakim28" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://leetcode.com/jjkk28" target="_blank" rel="noopener">LeetCode</a>
+    </div>
+    <a class="footer-back" href="/">&#8617; back to the store</a>
+    <p class="footer-meta">&copy; <span id="footer-year">2026</span> Joshua Kim &middot; built by hand</p>
+  </div>
+</footer>
 
     <script src="main.js"></script>
 </body>

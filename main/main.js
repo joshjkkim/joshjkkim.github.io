@@ -79,6 +79,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const footerYear = document.getElementById("footer-year");
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // Sky parallax: feed scroll progress (0..1) to the layers, which translate
+    // at different rates. Progress rather than raw pixels keeps the travel
+    // bounded however long the page gets.
+    const sky = document.getElementById("sky");
+    const stillPreferred = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (sky && !stillPreferred) {
+        let queued = false;
+
+        const applySkyOffset = () => {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = max > 0 ? window.scrollY / max : 0;
+            sky.style.setProperty("--sky-p", progress.toFixed(4));
+            queued = false;
+        };
+
+        const onScroll = () => {
+            if (!queued) {
+                queued = true;
+                requestAnimationFrame(applySkyOffset);
+            }
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll, { passive: true });
+        applySkyOffset();
+    }
+
     const body = document.body;
     const flashlightContainer = document.getElementById("flashlight-container");
     const flashlightLabel = document.getElementById("flashlight-label");
@@ -121,6 +152,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 600);
 });
 });
+
+/* ---- Konami code: ↑↑↓↓←→←→BA turns the portfolio into the pixel world ---- */
+(() => {
+    const SEQUENCE = ["arrowup", "arrowup", "arrowdown", "arrowdown",
+                      "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
+    function announce(text) {
+        let toast = document.getElementById("pixel-toast");
+        if (!toast) {
+            toast = document.createElement("div");
+            toast.id = "pixel-toast";
+            document.body.appendChild(toast);
+        }
+        toast.textContent = text;
+        toast.classList.remove("show");
+        void toast.offsetWidth; // reflow so the animation restarts
+        toast.classList.add("show");
+    }
+
+    // Match against a rolling window of the last N keys. Tracking a single
+    // index instead would desync on a repeated key (up-up-up-down...) and
+    // never recover, which reads as "the easter egg is broken".
+    const recent = [];
+
+    document.addEventListener("keydown", (event) => {
+        recent.push(event.key.toLowerCase());
+        if (recent.length > SEQUENCE.length) recent.shift();
+
+        if (recent.length === SEQUENCE.length &&
+            SEQUENCE.every((key, i) => key === recent[i])) {
+            recent.length = 0;
+            const on = document.body.classList.toggle("pixel-mode");
+            announce(on ? "PIXEL MODE ON" : "PIXEL MODE OFF");
+        }
+    });
+})();
 
 document.addEventListener("scroll", () => {
     const progress = document.getElementById("scroll-progress");
